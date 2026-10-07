@@ -305,14 +305,14 @@ function fillTpl(tpl,d){
     let valHtml = esc(x);
     let dirAttr = 'dir="ltr"';
     
-    // 1. ئەکاونت (ژمارە / ئایدی ئەکاونت) وەک شێوازی کەپسوول لە وێنەکەدا
+    // 1. ئەکاونت
     if (i === 0) {
       rowsHtml += `<div class="account-badge-row">
         <span class="account-number-val" ${dirAttr}>${valHtml}</span>
         <span class="account-label-text">:ئەکاونت</span>
       </div>`;
     }
-    // 2. ئیمەیل (Email)
+    // 2. ئیمەیل
     else if (i === 1) {
       rowsHtml += `<div class="field-group">
         <span class="field-label">ئیمەیل (Email)</span>
@@ -322,7 +322,7 @@ function fillTpl(tpl,d){
         </div>
       </div>`;
     }
-    // 3. پاسوۆرد (Password)
+    // 3. پاسوۆرد
     else if (i === 2) {
       rowsHtml += `<div class="field-group">
         <span class="field-label">پاسوۆرد (Password)</span>
@@ -332,18 +332,19 @@ function fillTpl(tpl,d){
         </div>
       </div>`;
     }
-    // 4. کۆدی دڵنیایی (ناو باوکسێکی گەورەی سەرنجڕاکێش)
+    // 4. کۆدی دڵنیایی (بە سیستەمی fetch بێ رێفرێشبوونەوە و پیشاندانی نووسین)
     else if (i === 4) {
       rowsHtml += `<div style="background: rgba(8, 12, 22, 0.75); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 20px; padding: 18px 14px; margin-top: 18px; margin-bottom: 18px; text-align: center; box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
         <span class="field-label" style="text-align: center; margin-bottom: 10px; font-size: 14px; color: #93c5fd; font-weight: 800;">کۆدی دڵنیایی</span>
         <div class="field-row" style="margin-bottom: 12px; border: 1px solid rgba(59, 130, 246, 0.5);">
-          <div class="field-value" ${dirAttr} style="text-align: center; font-size: 21px; font-weight: 800; letter-spacing: 3px; color: #60a5fa;">${valHtml}</div>
-          <button type="button" class="copy-btn" onclick="navigator.clipboard.writeText('${esc(x).replace(/'/g, "\\'")}');let b=this;b.textContent='کۆپی کرا';b.classList.add('copied');setTimeout(()=>{b.textContent='کۆپی';b.classList.remove('copied')},2000)">کۆپی</button>
+          <div id="code-val-box" class="field-value" ${dirAttr} style="text-align: center; font-size: 21px; font-weight: 800; letter-spacing: 3px; color: #60a5fa;">${valHtml}</div>
+          <button type="button" class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-val-box').textContent.trim());let b=this;b.textContent='کۆپی کرا';b.classList.add('copied');setTimeout(()=>{b.textContent='کۆپی';b.classList.remove('copied')},2000)">کۆپی</button>
         </div>
-        <button type="button" onclick="location.reload()" style="width: 100%; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #fff; border: 0; padding: 13px; border-radius: 14px; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(37,99,235,0.4); transition: all 0.2s;">وەرگرتنی کۆدی دڵنیایی</button>
+        <button type="button" id="fetch-code-btn" onclick="fetchNewVerificationCode()" style="width: 100%; background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #fff; border: 0; padding: 13px; border-radius: 14px; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(37,99,235,0.4); transition: all 0.2s;">وەرگرتنی کۆدی دڵنیایی</button>
+        <div id="code-msg-box" style="margin-top: 10px; font-size: 13px; font-weight: 700; color: #93c5fd; min-height: 20px;"></div>
       </div>`;
     }
-    // 5. هەر زانیارییەکی تری زیادە (ئەگەر هەبێت)
+    // 5. زانیاری زیاتر
     else {
       rowsHtml += `<div class="field-group">
         <span class="field-label">زانیاری ${i+1}</span>
@@ -355,15 +356,62 @@ function fillTpl(tpl,d){
     }
   });
 
-  // بەشی خوارەوە: پیشاندانی زانیارییە شاراوهکان (ڕۆژ / ژمارە) لە ناو باوکسێکدا بە دوگمەی چاو
+  // بەشی خوارەوە: پیشاندانی زانیارییە شاراوهکان
   rowsHtml += `<div style="background: rgba(8, 12, 22, 0.8); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 20px; padding: 16px; margin-top: 18px; text-align: center; display: flex; justify-content: space-between; align-items: center; box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);">
     <div style="font-size: 13px; color: #93c5fd; font-weight: 700; text-align: right; line-height: 1.5;">پێشان دانی زانیارییە شاراوهکان<br><span style="font-size: 11px; color: #64748b;">(ڕۆژ / ژمارە)</span></div>
-    <button type="button" onclick="alert('زانیارییە شاراوهکان: ' + (d.hidden_info || 'بەردەست نییە'))" style="background: rgba(51, 65, 85, 0.5); border: 1px solid rgba(255,255,255,0.1); width: 44px; height: 44px; border-radius: 14px; color: #fff; cursor: pointer; display: grid; place-items: center; font-size: 18px; transition: all 0.2s;" title="پیشاندان">👁️</button>
+    <button type="button" onclick="alert('زانیارییە شاراوهکان: ' + (window.globalHiddenInfo || 'بەردەست نییە'))" style="background: rgba(51, 65, 85, 0.5); border: 1px solid rgba(255,255,255,0.1); width: 44px; height: 44px; border-radius: 14px; color: #fff; cursor: pointer; display: grid; place-items: center; font-size: 18px; transition: all 0.2s;" title="پیشاندان">👁️</button>
   </div>`;
 
   const map={rows: rowsHtml, status:d.first?'یەکەم جار سکان کرا':'پێشتر سکان کراوە', time:d.scanned_at, count:d.count, code:d.code};
   const raw={rows: rowsHtml, button:REPORT_BTN};
   return tpl.replace(/\{\{\s*(\w+)\s*\}\}/g,(m,k)=>(k in raw)?raw[k]:(k in map?esc(map[k]):m));
+}
+
+// فەنکشنی نوێ بۆ وەرگرتنی کۆد بە بێ رێفرێشکردنی پەڕەکە (Fetch بێ لۆد بوونەوە)
+async function fetchNewVerificationCode(){
+  const btn = document.getElementById('fetch-code-btn');
+  const codeBox = document.getElementById('code-val-box');
+  const msgBox = document.getElementById('code-msg-box');
+  
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  msgBox.style.color = '#93c5fd';
+  msgBox.textContent = 'چاوەڕێ بکە، داوای کۆد دەکرێت...';
+  
+  try {
+    const urlParams = new URLSearchParams(location.search);
+    const codeVal = (urlParams.get('c') || '').trim().toUpperCase();
+    
+    const res = await fetch('https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/scan', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'sb_publishable_HFxscwwTWxXEspJEnpJgFA_Ib4A5cAQ',
+        'Authorization': 'Bearer sb_publishable_HFxscwwTWxXEspJEnpJgFA_Ib4A5cAQ'
+      },
+      body: JSON.stringify({ p_code: codeVal })
+    });
+    
+    const json = await res.json();
+    if (!json.ok) throw new Error(json.error || 'error');
+    
+    // دۆزینەوە و نوێکردنەوەی کۆدەکە لە ناو خانەکەدا
+    const dataArr = json.data || [];
+    if (dataArr.length > 4 && dataArr[4]) {
+      codeBox.textContent = dataArr[4];
+      msgBox.style.color = '#10b981';
+      msgBox.textContent = '✅ کۆدی دڵنیایی بە سەرکەوتوویی نوێکرایەوە.';
+    } else {
+      msgBox.style.color = '#f87171';
+      msgBox.textContent = 'هیچ کۆدێکی نوێ نەدۆزرایەوە.';
+    }
+  } catch (err) {
+    msgBox.style.color = '#f87171';
+    msgBox.textContent = 'کێشە ڕویدا، دووبارە هەوڵ بدەرەوە.';
+  } finally {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+  }
 }
 
 function wireReport(){
@@ -381,7 +429,8 @@ function wireReport(){
     const send=e.target.closest('[data-rep-send]'); if(!send||send.disabled) return;
     send.disabled=true; msg.style.color=''; msg.textContent='چاوەڕێ بکە...';
     try{
-      const r=await fetch('https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/report_qr',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p_code:code,p_note:box.querySelector('[data-rep-note]').value})}).then(r=>r.json());
+      const codeVal=(new URLSearchParams(location.search).get('c')||'').trim().toUpperCase();
+      const r=await fetch('https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/report_qr',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p_code:codeVal,p_note:box.querySelector('[data-rep-note]').value})}).then(r=>r.json());
       if(!r.ok) throw 0;
       if(form) form.style.display='none'; 
       msg.style.color='#60a5fa';
@@ -397,6 +446,7 @@ else fetch(API,{method:'POST',headers:{'Content-Type':'application/json',apikey:
 .then(r=>r.json()).then(d=>{
   if(!d.ok){fail(d.error==='empty'?'هیچ زانیارییەک بەردەست نییە.':'QR کۆدی هەڵە.');return}
   d.code=code;
+  window.globalHiddenInfo = d.hidden_info;
   const html=fillTpl((d.tpl&&d.tpl.trim())?d.tpl:DEFAULT_TPL,d);
   document.open(); document.write(html); document.close();
   wireReport();
