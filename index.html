@@ -6,27 +6,32 @@
 <title>کۆمپانیای دووبرا - Dw Bra</title>
 <link rel="preconnect" href="https://foplvmfppbngywmxmqof.supabase.co" crossorigin>
 <style>
-:root{--bg:#f8fafc;--card:#ffffff;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--soft:#eff6ff;--warn:#b4432f;--warnsoft:#fbe9e5}
-@media (prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--ink:#f8fafc;--muted:#94a3b8;--line:#334155;--accent:#3b82f6;--soft:#172554;--warn:#ef8a74;--warnsoft:#3a201b}}
+:root{--bg:#070b12;--card:#0f172a;--border:#1e3a8a;--glow:#3b82f6;--text:#f8fafc;--muted:#94a3b8;--accent:#2563eb;--btn-bg:#172554;--warn:#ef8a74;--warnsoft:#3a201b}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:16px;line-height:1.6}
-.wrap{max-width:480px;margin:0 auto;padding:24px 16px}
-.top{display:flex;align-items:center;gap:14px;margin-bottom:20px;background:var(--card);padding:16px;border-radius:16px;border:1px solid var(--line);box-shadow:0 4px 6px -1px rgba(0,0,0,0.02)}
-.logo{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg, var(--accent), #1d4ed8);color:#fff;display:grid;place-items:center;font-weight:900;font-size:22px;box-shadow:0 4px 12px rgba(37,99,235,0.2)}
-.top b{font-size:20px;display:block;line-height:1.2;letter-spacing:-0.5px}
-.top small{color:var(--muted);font-weight:500}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 10px 15px -3px rgba(0,0,0,0.03)}
-.f{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
-.f:last-child{border:0}
-.f span{color:var(--muted);font-size:14px;font-weight:500}
-.f b{text-align:end;word-break:break-word;font-size:15px}
-.pill{display:inline-block;font-size:13px;padding:4px 14px;border-radius:99px;background:var(--soft);color:var(--accent);font-weight:700;margin-bottom:12px}
-.company-link{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);text-align:center}
-.company-link a{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-decoration:none;font-weight:700;font-size:14px;transition:opacity 0.2s}
-.company-link a:hover{opacity:0.8}
-.sk{height:18px;border-radius:6px;background:var(--line);margin:14px 0;animation:p 1s infinite alternate}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:440px;margin:0 auto;padding:24px 16px}
+.top-box{text-align:center;margin-bottom:24px}
+.logo-container{width:90px;height:90px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle, #1e3a8a 0%, #0f172a 70%);border:2px solid var(--glow);display:grid;place-items:center;box-shadow:0 0 20px rgba(59,130,246,0.4)}
+.logo-inner{font-weight:900;font-size:22px;color:#fff;letter-spacing:1px}
+.company-title{font-size:20px;font-weight:900;letter-spacing:1px;color:#fff;margin-top:8px}
+
+.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3)}
+
+.field-group{margin-bottom:16px}
+.field-label{font-size:14px;color:var(--muted);margin-bottom:6px;display:block;text-align:right}
+
+.field-row{display:flex;align-items:center;background:#0b1329;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.field-value{flex:1;padding:12px 14px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0}
+
+.copy-btn{background:var(--btn-bg);color:#93c5fd;border:0;border-right:1px solid var(--border);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:46px;transition:background 0.2s}
+.copy-btn:hover{background:#1d4ed8;color:#fff}
+.copy-btn.copied{background:#15803d;color:#fff}
+
+.pill{display:inline-block;font-size:12px;padding:4px 12px;border-radius:99px;background:#172554;color:#60a5fa;font-weight:700;margin-bottom:16px;border:1px solid #1e3a8a}
+
+.sk{height:20px;border-radius:6px;background:#1e293b;margin:14px 0;animation:p 1s infinite alternate}
 @keyframes p{to{opacity:.4}}
-.err{background:var(--warnsoft);color:var(--warn);font-weight:700;padding:20px;border-radius:16px;text-align:center;border:1px solid rgba(180,67,47,0.2)}
+.err{background:var(--warnsoft);color:var(--warn);font-weight:700;padding:20px;border-radius:16px;text-align:center;border:1px solid rgba(239,138,116,0.2)}
 </style>
 </head>
 <body>
@@ -43,32 +48,34 @@ const DEFAULT_TPL=`<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>کۆمپانیای دووبرا - Dw Bra</title>
 <style>
-:root{--bg:#f8fafc;--card:#ffffff;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--accent:#2563eb;--soft:#eff6ff}
-@media (prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--ink:#f8fafc;--muted:#94a3b8;--line:#334155;--accent:#3b82f6;--soft:#172554}}
+:root{--bg:#070b12;--card:#0f172a;--border:#1e3a8a;--glow:#3b82f6;--text:#f8fafc;--muted:#94a3b8;--accent:#2563eb;--btn-bg:#172554}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:16px;line-height:1.6}
-.wrap{max-width:480px;margin:0 auto;padding:24px 16px}
-.top{display:flex;align-items:center;gap:14px;margin-bottom:20px;background:var(--card);padding:16px;border-radius:16px;border:1px solid var(--line)}
-.logo{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg, var(--accent), #1d4ed8);color:#fff;display:grid;place-items:center;font-weight:900;font-size:22px}
-.top b{font-size:20px;display:block;line-height:1.2}.top small{color:var(--muted);font-weight:500}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 10px 15px -3px rgba(0,0,0,0.03)}
-.f{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
-.f:last-child{border:0}.f span{color:var(--muted);font-size:14px}.f b{text-align:end;word-break:break-word;font-size:15px}
-.pill{display:inline-block;font-size:13px;padding:4px 14px;border-radius:99px;background:var(--soft);color:var(--accent);font-weight:700;margin-bottom:12px}
-.company-link{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);text-align:center}
-.company-link a{color:var(--accent);text-decoration:none;font-weight:700;font-size:14px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:440px;margin:0 auto;padding:24px 16px}
+.top-box{text-align:center;margin-bottom:24px}
+.logo-container{width:90px;height:90px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle, #1e3a8a 0%, #0f172a 70%);border:2px solid var(--glow);display:grid;place-items:center;box-shadow:0 0 20px rgba(59,130,246,0.4)}
+.logo-inner{font-weight:900;font-size:22px;color:#fff;letter-spacing:1px}
+.company-title{font-size:20px;font-weight:900;letter-spacing:1px;color:#fff;margin-top:8px}
+.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3)}
+.field-group{margin-bottom:16px}
+.field-label{font-size:14px;color:var(--muted);margin-bottom:6px;display:block;text-align:right}
+.field-row{display:flex;align-items:center;background:#0b1329;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.field-value{flex:1;padding:12px 14px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0}
+.copy-btn{background:var(--btn-bg);color:#93c5fd;border:0;border-right:1px solid var(--border);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:46px;transition:background 0.2s}
+.copy-btn:hover{background:#1d4ed8;color:#fff}
+.copy-btn.copied{background:#15803d;color:#fff}
+.pill{display:inline-block;font-size:12px;padding:4px 12px;border-radius:99px;background:#172554;color:#60a5fa;font-weight:700;margin-bottom:16px;border:1px solid #1e3a8a}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><div class="logo">DB</div><div><b>کۆمپانیای دووبرا</b><small>Dw Bra Company</small></div></div>
-  <div class="card">
+  <div class="top-box">
+    <div class="logo-container"><div class="logo-inner">DB</div></div>
+    <div class="company-title">COMPANY DU BRA</div>
+  </div>
+  <div class="main-card">
     <span class="pill">{{status}}</span>
     {{rows}}
-    <div class="f"><span>کاتی یەکەم سکان</span><b dir="ltr">{{time}}</b></div>
-    <div class="company-link">
-      <a href="https://example.com" target="_blank">🔗 سەردانی کۆمپانیای دووبرا بکە</a>
-    </div>
   </div>
   {{button}}
 </div>
@@ -76,22 +83,34 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn","Not
 </html>`;
 
 const REPORT_BTN='<div class="dubra-rep" style="margin-top:16px;display:grid;gap:8px">'+
-  '<button type="button" data-rep-open style="width:100%;padding:12px;border-radius:12px;border:1px solid #e3b4aa;background:#fbe9e5;color:#b4432f;font:inherit;font-weight:700;cursor:pointer;transition:background 0.2s">زانیارییەکە هەڵەیە؟ داواکاری گۆڕین</button>'+
+  '<button type="button" data-rep-open style="width:100%;padding:12px;border-radius:12px;border:1px solid #3b82f6;background:#172554;color:#93c5fd;font:inherit;font-weight:700;cursor:pointer">زانیارییەکە هەڵەیە؟ داواکاری گۆڕین</button>'+
   '<div data-rep-form style="display:none;gap:8px">'+
-  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی (ئارەزوومەندانە)، بۆ نموونە: زانیارییەکە پێویستی بە نوێکردنەوەیە" style="width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #cbd5e1;font:inherit;resize:vertical;background:var(--card);color:var(--ink)"></textarea>'+
-  '<button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:#b4432f;color:#fff;font:inherit;font-weight:700;cursor:pointer">ناردنی داواکاری</button></div>'+
+  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی..." style="width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #1e3a8a;font:inherit;resize:vertical;background:#0b1329;color:#fff"></textarea>'+
+  '<button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:#2563eb;color:#fff;font:inherit;font-weight:700;cursor:pointer">ناردنی داواکاری</button></div>'+
   '<p data-rep-msg style="margin:0;text-align:center;font-weight:700;font-size:14px"></p></div>';
 
 function fillTpl(tpl,d){
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const h=d.headers||[], v=d.data||[];
+  const customLabels = ['Apple ID', 'ئیمەیل (Email)', 'ڕێکەوتی لەدایکبوون', 'ژمارەی مۆبایل', 'کۆدی دڵنیایی'];
   
-  // Custom labels mapping matching your fields: a: Apple ID, b: Email, c: DOB, d: Mobile, e: Link
-  const customLabels = ['Apple ID', 'ئیمەیل (Email)', 'ڕێکەوتی لەدایکبوون', 'ژمارەی مۆبایل', 'لینکی کۆمپانیا'];
-  
-  const rows=v.map((x,i)=>(x!==null&&String(x).trim()!=='')?'<div class="f"><span>'+esc(customLabels[i] || h[i] || ('زانیاری '+(i+1)))+'</span><b dir="ltr">'+esc(x)+'</b></div>':'').join('');
+  const rows = v.map((x,i) => {
+    if (x === null || String(x).trim() === '') return '';
+    let valHtml = esc(x);
+    let dirAttr = 'dir="ltr"';
+    
+    const label = esc(customLabels[i] || h[i] || ('زانیاری ' + (i + 1)));
+    
+    return `<div class="field-group">
+      <span class="field-label">${label}</span>
+      <div class="field-row">
+        <div class="field-value" ${dirAttr}>${valHtml}</div>
+        <button type="button" class="copy-btn" onclick="navigator.clipboard.writeText('${esc(x).replace(/'/g, "\\'")}');let b=this;b.textContent='کۆپی کرا';b.classList.add('copied');setTimeout(()=>{b.textContent='کۆپی';b.classList.remove('copied')},2000)">کۆپی</button>
+      </div>
+    </div>`;
+  }).join('');
+
   const map={rows, status:d.first?'یەکەم جار سکان کرا':'پێشتر سکان کراوە', time:d.scanned_at, count:d.count, code:d.code};
-  for(let i=0;i<5;i++){ map[String(i+1)]=v[i]; map['name'+(i+1)]=customLabels[i]||h[i]; }
   const raw={rows, button:REPORT_BTN};
   return tpl.replace(/\{\{\s*(\w+)\s*\}\}/g,(m,k)=>(k in raw)?raw[k]:(k in map?esc(map[k]):m));
 }
@@ -106,9 +125,9 @@ function wireReport(){
     try{
       const r=await fetch('https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/report_qr',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p_code:code,p_note:box.querySelector('[data-rep-note]').value})}).then(r=>r.json());
       if(!r.ok) throw 0;
-      form.style.display='none'; msg.style.color='#2563eb';
-      msg.textContent=r.already?'داواکارییەکەت پێشتر نێردراوە، بەم زووانە چارەسەر دەکرێت.':'✅ داواکارییەکەت نێردرا. دوای چارەسەرکردن، QR ـەکە دووبارە سکان بکەرەوە.';
-    }catch(err){ send.disabled=false; msg.style.color='#b4432f'; msg.textContent='نەنێردرا، تکایە دووبارە هەوڵ بدەرەوە.'; }
+      form.style.display='none'; msg.style.color='#60a5fa';
+      msg.textContent=r.already?'داواکارییەکەت پێشتر نێردراوە.':'✅ داواکارییەکەت نێردرا.';
+    }catch(err){ send.disabled=false; msg.style.color='#ef8a74'; msg.textContent='نەنێردرا، دووبارە هەوڵ بدەرەوە.'; }
   });
 }
 
@@ -117,12 +136,12 @@ const fail=t=>{document.getElementById('out').innerHTML='<div class="err">'+t+'<
 if(!code) fail('QR کۆدەکە دروست نییە.');
 else fetch(API,{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p_code:code})})
 .then(r=>r.json()).then(d=>{
-  if(!d.ok){fail(d.error==='empty'?'ببورە، لە ئێستادا هیچ زانیارییەک بەردەست نییە.':'ئەم QR کۆدە دروست نییە.');return}
+  if(!d.ok){fail(d.error==='empty'?'هیچ زانیارییەک بەردەست نییە.':'QR کۆدی هەڵە.');return}
   d.code=code;
   const html=fillTpl((d.tpl&&d.tpl.trim())?d.tpl:DEFAULT_TPL,d);
   document.open(); document.write(html); document.close();
   wireReport();
-}).catch(()=>fail('کێشەی ئینتەرنێت هەیە، تکایە دووبارە هەوڵ بدەرەوە.'));
+}).catch(()=>fail('کێشەی ئینتەرنێت هەیە.'));
 </script>
 </body>
 </html>
