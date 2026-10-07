@@ -14,7 +14,9 @@
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --accent: #3b82f6;
+  --accent-hover: #2563eb;
   --input-bg: rgba(7, 11, 18, 0.6);
+  --btn-grad: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
 }
 *{box-sizing:border-box}
 body{
@@ -29,82 +31,143 @@ body{
 }
 .wrap{max-width:440px;margin:0 auto;padding:24px 16px}
 
-.header-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.icon-action-btn{width:44px;height:44px;border-radius:14px;background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-main);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);text-decoration:none;font-size:20px;transition:all 0.2s}
-.icon-action-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
-.whatsapp-btn{color:#22c55e}
-.support-btn{color:#60a5fa}
-
-.top-box{text-align:center;margin-bottom:22px}
-.logo-container{width:100px;height:100px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle, #2563eb 0%, #0f172a 75%);border:2px solid #60a5fa;display:grid;place-items:center;box-shadow:0 0 30px rgba(59, 130, 246, 0.5)}
-.logo-inner{font-weight:900;font-size:28px;color:#fff;letter-spacing:1px}
-.company-title{font-size:22px;font-weight:900;letter-spacing:1.5px;color:#fff;margin-top:6px}
-
-.main-card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:28px;padding:22px;box-shadow:var(--glow-shadow), 0 10px 30px rgba(0,0,0,0.5)}
-
-/* Pill Status with Green Glowing Dot */
-.pill{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  padding: 6px 16px;
-  border-radius: 99px;
-  background: rgba(37, 99, 235, 0.15);
-  color: #93c5fd;
-  font-weight: 700;
-  margin-bottom: 18px;
-  border: 1px solid rgba(59, 130, 246, 0.3);
-}
-.status-dot {
-  width: 9px;
-  height: 9px;
-  background-color: #22c55e;
-  border-radius: 50%;
-  box-shadow: 0 0 10px #22c55e;
-  display: inline-block;
-}
-.status-dot.warn {
-  background-color: #eab308;
-  box-shadow: 0 0 10px #eab308;
-}
-
-.field-group{margin-bottom:16px}
-.field-label{font-size:13px;color:var(--text-muted);margin-bottom:6px;display:block;text-align:right;font-weight:600}
-.field-row{display:flex;align-items:center;background:var(--input-bg);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden}
-.field-value{flex:1;padding:12px 16px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0;font-weight:500}
-
-.copy-btn{background:rgba(37, 99, 235, 0.15);color:#93c5fd;border:0;border-right:1px solid rgba(255,255,255,0.08);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:48px;transition:background 0.2s}
-.copy-btn:hover{background:var(--accent);color:#fff}
-.copy-btn.copied{background:#16a34a;color:#fff}
-
-/* Action Button Style for Mobile & Birthday */
-.action-item-btn{
-  width: 100%;
-  background: var(--input-bg);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #fff;
-  padding: 12px 16px;
-  border-radius: 14px;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+/* Top Floating Bar (WhatsApp & Edit Icon) */
+.header-actions{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+}
+.icon-action-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-size: 20px;
+}
+.icon-action-btn:hover{
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59,130,246,0.3);
+}
+.whatsapp-btn{ color: #22c55e; }
+
+/* Logo & Title Box */
+.top-box{text-align:center;margin-bottom:22px}
+.logo-container{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2563eb 0%, #0f172a 75%);
+  border: 2px solid #60a5fa;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), inset 0 0 15px rgba(255,255,255,0.2);
+  position: relative;
+}
+.logo-inner{
+  font-weight: 900;
+  font-size: 28px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.company-title{
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(59,130,246,0.4);
+  margin-top: 6px;
+}
+
+/* Main Card Style */
+.main-card{
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: var(--glow-shadow), 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.field-group{margin-bottom:16px}
+.field-label{
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: block;
+  text-align: right;
+  font-weight: 600;
+}
+
+.field-row{
+  display: flex;
+  align-items: center;
+  background: var(--input-bg);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.field-row:focus-within{
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(59,130,246,0.2);
+}
+.field-value{
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #fff;
+  word-break: break-word;
+  background: transparent;
+  border: 0;
+  font-weight: 500;
+}
+
+.copy-btn{
+  background: rgba(37, 99, 235, 0.15);
+  color: #93c5fd;
+  border: 0;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 0 16px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  height: 100%;
+  min-height: 48px;
   transition: all 0.2s;
 }
-.action-item-btn:hover{
-  background: rgba(37, 99, 235, 0.25);
-  border-color: var(--accent);
-}
-.action-item-btn.copied{
-  background: #16a34a;
-  border-color: #16a34a;
+.copy-btn:hover{
+  background: var(--accent);
   color: #fff;
 }
-.action-item-btn span { color: var(--text-muted); font-size: 13px; }
+.copy-btn.copied{
+  background: #16a34a;
+  color: #fff;
+}
+
+.pill{
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  background: rgba(37, 99, 235, 0.2);
+  color: #93c5fd;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
 
 .sk{height:20px;border-radius:6px;background:#1e293b;margin:14px 0;animation:p 1s infinite alternate}
 @keyframes p{to{opacity:.4}}
@@ -136,50 +199,60 @@ const DEFAULT_TPL=`<!doctype html>
   --input-bg: rgba(7, 11, 18, 0.6);
 }
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:var(--bg-gradient);background-attachment:fixed;color:var(--text-main);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:15px;line-height:1.6}
+body{
+  margin:0;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;
+  font-size:15px;
+  line-height:1.6;
+}
 .wrap{max-width:440px;margin:0 auto;padding:24px 16px}
 .header-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .icon-action-btn{width:44px;height:44px;border-radius:14px;background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-main);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);text-decoration:none;font-size:20px}
 .icon-action-btn:hover{border-color:var(--accent)}
 .whatsapp-btn{color:#22c55e}
-.support-btn{color:#60a5fa}
 .top-box{text-align:center;margin-bottom:22px}
 .logo-container{width:100px;height:100px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle, #2563eb 0%, #0f172a 75%);border:2px solid #60a5fa;display:grid;place-items:center;box-shadow:0 0 30px rgba(59, 130, 246, 0.5)}
 .logo-inner{font-weight:900;font-size:28px;color:#fff;letter-spacing:1px}
 .company-title{font-size:22px;font-weight:900;letter-spacing:1.5px;color:#fff;margin-top:6px}
 .main-card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:28px;padding:22px;box-shadow:var(--glow-shadow), 0 10px 30px rgba(0,0,0,0.5)}
-.pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:6px 16px;border-radius:99px;background:rgba(37, 99, 235, 0.15);color:#93c5fd;font-weight:700;margin-bottom:18px;border:1px solid rgba(59, 130, 246, 0.3)}
-.status-dot{width:9px;height:9px;background-color:#22c55e;border-radius:50%;box-shadow:0 0 10px #22c55e;display:inline-block}
-.status-dot.warn{background-color:#eab308;box-shadow:0 0 10px #eab308}
 .field-group{margin-bottom:16px}
 .field-label{font-size:13px;color:var(--text-muted);margin-bottom:6px;display:block;text-align:right;font-weight:600}
 .field-row{display:flex;align-items:center;background:var(--input-bg);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden}
 .field-value{flex:1;padding:12px 16px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0;font-weight:500}
 .copy-btn{background:rgba(37, 99, 235, 0.15);color:#93c5fd;border:0;border-right:1px solid rgba(255,255,255,0.08);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:48px}
 .copy-btn.copied{background:#16a34a;color:#fff}
-.action-item-btn{width:100%;background:var(--input-bg);border:1px solid rgba(59, 130, 246, 0.3);color:#fff;padding:12px 16px;border-radius:14px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.action-item-btn:hover{background:rgba(37, 99, 235, 0.25);border-color:#3b82f6}
-.action-item-btn.copied{background:#16a34a;border-color:#16a34a;color:#fff}
-.action-item-btn span{color:#94a3b8;font-size:13px}
+.pill{display:inline-block;font-size:12px;padding:5px 14px;border-radius:99px;background:rgba(37, 99, 235, 0.2);color:#93c5fd;font-weight:700;margin-bottom:16px;border:1px solid rgba(59, 130, 246, 0.3)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="header-actions">
     <a href="https://wa.me/" target="_blank" class="icon-action-btn whatsapp-btn" title="واتسئەپ">💬</a>
-    <a href="https://wa.me/" target="_blank" class="icon-action-btn support-btn" title="پشتیوانی">🎧</a>
+    <button type="button" class="icon-action-btn" data-rep-open title="داواکاری گۆڕین">✏️</button>
   </div>
   <div class="top-box">
     <div class="logo-container"><div class="logo-inner">DB</div></div>
     <div class="company-title">COMPANY DU BRA</div>
   </div>
   <div class="main-card">
-    <div class="pill"><span class="status-dot {{status_class}}"></span>{{status}}</div>
+    <span class="pill">{{status}}</span>
     {{rows}}
   </div>
+  {{button}}
 </div>
 </body>
 </html>`;
+
+const REPORT_BTN='<div class="dubra-rep" style="margin-top:16px">'+
+  '<div data-rep-form style="display:none;gap:10px;background:rgba(15, 23, 42, 0.9);padding:18px;border-radius:20px;border:1px solid rgba(59,130,246,0.4);backdrop-filter:blur(10px)">'+
+  '<div style="font-weight:700;font-size:14px;color:#93c5fd;margin-bottom:2px">داواکاری گۆڕین</div>'+
+  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی خۆت لێرە بنووسە..." style="width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);font:inherit;resize:vertical;background:rgba(7,11,18,0.7);color:#fff"></textarea>'+
+  '<button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font:inherit;font-weight:700;cursor:pointer">ناردنی داواکاری</button></div>'+
+  '<p data-rep-msg style="margin:10px 0 0;text-align:center;font-weight:700;font-size:14px"></p></div>';
 
 function fillTpl(tpl,d){
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -189,38 +262,45 @@ function fillTpl(tpl,d){
   const rows = v.map((x,i) => {
     if (x === null || String(x).trim() === '') return '';
     let valHtml = esc(x);
+    let dirAttr = 'dir="ltr"';
     const label = esc(customLabels[i] || h[i] || ('زانیاری ' + (i + 1)));
     
-    // پشکنین بۆ ئەوەی بزانین ئایا ئیمەیلە یان پاسۆردە (ئایا دەبێت خانەی کۆپی هەبێت)
-    // مەرج: ئەگەر لەسەرەوەش ناوی ناونیشانەکە Apple ID یان ئیمەیل یان تێپەڕەوشە/کۆد بێت
-    const isEmailOrPass = i === 0 || i === 1 || label.toLowerCase().includes('email') || label.toLowerCase().includes('apple id') || label.toLowerCase().includes('password');
-
-    if (isEmailOrPass) {
-      let dirAttr = (i === 0 || i === 1) ? 'dir="ltr"' : '';
-      return `<div class="field-group">
-        <span class="field-label">${label}</span>
-        <div class="field-row">
-          <div class="field-value" ${dirAttr}>${valHtml}</div>
-          <button type="button" class="copy-btn" onclick="navigator.clipboard.writeText('${esc(x).replace(/'/g, "\\'")}');let b=this;b.textContent='کۆپی کرا';b.classList.add('copied');setTimeout(()=>{b.textContent='کۆپی';b.classList.remove('copied')},2000)">کۆپی</button>
-        </div>
-      </div>`;
-    } else {
-      // بۆ ژمارەی مۆبایل و ڕێکەوتی لەدایکبوون و هی تر کە دەبنە دوگمە
-      return `<div class="field-group">
-        <span class="field-label">${label}</span>
-        <button type="button" class="action-item-btn" onclick="navigator.clipboard.writeText('${esc(x).replace(/'/g, "\\'")}');let b=this;b.innerHTML='${valHtml} <span>کۆپی کرا ✓</span>';b.classList.add('copied');setTimeout(()=>{b.innerHTML='${valHtml} <span>کۆپی</span>';b.classList.remove('copied')},2000)">
-          ${valHtml} <span>کۆپی</span>
-        </button>
-      </div>`;
-    }
+    return `<div class="field-group">
+      <span class="field-label">${label}</span>
+      <div class="field-row">
+        <div class="field-value" ${dirAttr}>${valHtml}</div>
+        <button type="button" class="copy-btn" onclick="navigator.clipboard.writeText('${esc(x).replace(/'/g, "\\'")}');let b=this;b.textContent='کۆپی کرا';b.classList.add('copied');setTimeout(()=>{b.textContent='کۆپی';b.classList.remove('copied')},2000)">کۆپی</button>
+      </div>
+    </div>`;
   }).join('');
 
-  const isFirst = d.first;
-  const statusText = isFirst ? 'یەکەم جار سکان کرا' : 'پێشتر سکان کراوە';
-  const statusClass = isFirst ? '' : 'warn';
+  const map={rows, status:d.first?'یەکەم جار سکان کرا':'پێشتر سکان کراوە', time:d.scanned_at, count:d.count, code:d.code};
+  const raw={rows, button:REPORT_BTN};
+  return tpl.replace(/\{\{\s*(\w+)\s*\}\}/g,(m,k)=>(k in raw)?raw[k]:(k in map?esc(map[k]):m));
+}
 
-  const map={rows, status:statusText, status_class:statusClass, time:d.scanned_at, count:d.count, code:d.code};
-  return tpl.replace(/\{\{\s*(\w+)\s*\}\}/g,(m,k)=>(k in map?esc(map[k]):m));
+function wireReport(){
+  document.addEventListener('click',async e=>{
+    const box=e.target.closest('.wrap'); if(!box) return;
+    const form=box.querySelector('[data-rep-form]'), msg=box.querySelector('[data-rep-msg]');
+    if(e.target.closest('[data-rep-open]')){ 
+      if(form) {
+        form.style.display = form.style.display === 'grid' ? 'none' : 'grid';
+        const note = box.querySelector('[data-rep-note]');
+        if(note && form.style.display === 'grid') note.focus();
+      }
+      return; 
+    }
+    const send=e.target.closest('[data-rep-send]'); if(!send||send.disabled) return;
+    send.disabled=true; msg.style.color=''; msg.textContent='چاوەڕێ بکە...';
+    try{
+      const r=await fetch('https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/report_qr',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p_code:code,p_note:box.querySelector('[data-rep-note]').value})}).then(r=>r.json());
+      if(!r.ok) throw 0;
+      if(form) form.style.display='none'; 
+      msg.style.color='#60a5fa';
+      msg.textContent=r.already?'داواکارییەکەت پێشتر نێردراوە.':'✅ داواکارییەکەت نێردرا.';
+    }catch(err){ send.disabled=false; msg.style.color='#ef8a74'; msg.textContent='نەنێردرا، دووبارە هەوڵ بدەرەوە.'; }
+  });
 }
 
 const code=(new URLSearchParams(location.search).get('c')||'').trim().toUpperCase();
@@ -232,6 +312,7 @@ else fetch(API,{method:'POST',headers:{'Content-Type':'application/json',apikey:
   d.code=code;
   const html=fillTpl((d.tpl&&d.tpl.trim())?d.tpl:DEFAULT_TPL,d);
   document.open(); document.write(html); document.close();
+  wireReport();
 }).catch(()=>fail('کێشەی ئینتەرنێت هەیە.'));
 </script>
 </body>
