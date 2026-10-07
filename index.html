@@ -3,39 +3,175 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>کۆمپانیای دووبرا - Dw Bra</title>
+<title>COMPANY DU BRA</title>
 <link rel="preconnect" href="https://foplvmfppbngywmxmqof.supabase.co" crossorigin>
 <style>
-:root{--bg:#070b12;--card:#0f172a;--border:#1e3a8a;--glow:#3b82f6;--text:#f8fafc;--muted:#94a3b8;--accent:#2563eb;--btn-bg:#172554;--warn:#ef8a74;--warnsoft:#3a201b}
+:root{
+  --bg-gradient: radial-gradient(circle at 50% 0%, #1a2c4e 0%, #070b12 70%);
+  --card-bg: rgba(15, 23, 42, 0.75);
+  --border-color: rgba(59, 130, 246, 0.35);
+  --glow-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --input-bg: rgba(7, 11, 18, 0.6);
+  --btn-grad: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:16px;line-height:1.6}
+body{
+  margin:0;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;
+  font-size:15px;
+  line-height:1.6;
+}
 .wrap{max-width:440px;margin:0 auto;padding:24px 16px}
-.top-box{text-align:center;margin-bottom:24px}
-.logo-container{width:90px;height:90px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle, #1e3a8a 0%, #0f172a 70%);border:2px solid var(--glow);display:grid;place-items:center;box-shadow:0 0 20px rgba(59,130,246,0.4)}
-.logo-inner{font-weight:900;font-size:22px;color:#fff;letter-spacing:1px}
-.company-title{font-size:20px;font-weight:900;letter-spacing:1px;color:#fff;margin-top:8px}
 
-.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3);position:relative}
+/* Top Floating Bar (WhatsApp & Edit Icon) */
+.header-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.icon-action-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-size: 20px;
+}
+.icon-action-btn:hover{
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59,130,246,0.3);
+}
+.whatsapp-btn{ color: #22c55e; }
 
-/* Small edit request icon button at top-left inside card */
-.edit-icon-btn{position:absolute;top:16px;left:16px;background:#172554;border:1px solid var(--border);color:#93c5fd;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;cursor:pointer;font-size:16px;transition:background 0.2s}
-.edit-icon-btn:hover{background:#1d4ed8;color:#fff}
+/* Logo & Title Box */
+.top-box{text-align:center;margin-bottom:22px}
+.logo-container{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2563eb 0%, #0f172a 75%);
+  border: 2px solid #60a5fa;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), inset 0 0 15px rgba(255,255,255,0.2);
+  position: relative;
+}
+.logo-inner{
+  font-weight: 900;
+  font-size: 28px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.company-title{
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(59,130,246,0.4);
+  margin-top: 6px;
+}
+
+/* Main Card Style */
+.main-card{
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: var(--glow-shadow), 0 10px 30px rgba(0,0,0,0.5);
+}
 
 .field-group{margin-bottom:16px}
-.field-label{font-size:14px;color:var(--muted);margin-bottom:6px;display:block;text-align:right}
+.field-label{
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  display: block;
+  text-align: right;
+  font-weight: 600;
+}
 
-.field-row{display:flex;align-items:center;background:#0b1329;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.field-value{flex:1;padding:12px 14px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0}
+.field-row{
+  display: flex;
+  align-items: center;
+  background: var(--input-bg);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.field-row:focus-within{
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(59,130,246,0.2);
+}
+.field-value{
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #fff;
+  word-break: break-word;
+  background: transparent;
+  border: 0;
+  font-weight: 500;
+}
 
-.copy-btn{background:var(--btn-bg);color:#93c5fd;border:0;border-right:1px solid var(--border);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:46px;transition:background 0.2s}
-.copy-btn:hover{background:#1d4ed8;color:#fff}
-.copy-btn.copied{background:#15803d;color:#fff}
+.copy-btn{
+  background: rgba(37, 99, 235, 0.15);
+  color: #93c5fd;
+  border: 0;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 0 16px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  height: 100%;
+  min-height: 48px;
+  transition: all 0.2s;
+}
+.copy-btn:hover{
+  background: var(--accent);
+  color: #fff;
+}
+.copy-btn.copied{
+  background: #16a34a;
+  color: #fff;
+}
 
-.pill{display:inline-block;font-size:12px;padding:4px 12px;border-radius:99px;background:#172554;color:#60a5fa;font-weight:700;margin-bottom:16px;border:1px solid #1e3a8a}
+.pill{
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  background: rgba(37, 99, 235, 0.2);
+  color: #93c5fd;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
 
 .sk{height:20px;border-radius:6px;background:#1e293b;margin:14px 0;animation:p 1s infinite alternate}
 @keyframes p{to{opacity:.4}}
-.err{background:var(--warnsoft);color:var(--warn);font-weight:700;padding:20px;border-radius:16px;text-align:center;border:1px solid rgba(239,138,116,0.2)}
+.err{background:rgba(180,67,47,0.2);color:#ef8a74;font-weight:700;padding:20px;border-radius:16px;text-align:center;border:1px solid rgba(180,67,47,0.3)}
 </style>
 </head>
 <body>
@@ -50,34 +186,59 @@ const DEFAULT_TPL=`<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>کۆمپانیای دووبرا - Dw Bra</title>
+<title>COMPANY DU BRA</title>
 <style>
-:root{--bg:#070b12;--card:#0f172a;--border:#1e3a8a;--glow:#3b82f6;--text:#f8fafc;--muted:#94a3b8;--accent:#2563eb;--btn-bg:#172554}
+:root{
+  --bg-gradient: radial-gradient(circle at 50% 0%, #1a2c4e 0%, #070b12 70%);
+  --card-bg: rgba(15, 23, 42, 0.75);
+  --border-color: rgba(59, 130, 246, 0.35);
+  --glow-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6;
+  --input-bg: rgba(7, 11, 18, 0.6);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;font-size:16px;line-height:1.6}
+body{
+  margin:0;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family:"Vazirmatn","Noto Sans Arabic",Tahoma,sans-serif;
+  font-size:15px;
+  line-height:1.6;
+}
 .wrap{max-width:440px;margin:0 auto;padding:24px 16px}
-.top-box{text-align:center;margin-bottom:24px}
-.logo-container{width:90px;height:90px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle, #1e3a8a 0%, #0f172a 70%);border:2px solid var(--glow);display:grid;place-items:center;box-shadow:0 0 20px rgba(59,130,246,0.4)}
-.logo-inner{font-weight:900;font-size:22px;color:#fff;letter-spacing:1px}
-.company-title{font-size:20px;font-weight:900;letter-spacing:1px;color:#fff;margin-top:8px}
-.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3);position:relative}
-.edit-icon-btn{position:absolute;top:16px;left:16px;background:#172554;border:1px solid var(--border);color:#93c5fd;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;cursor:pointer;font-size:16px}
+.header-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.icon-action-btn{width:44px;height:44px;border-radius:14px;background:var(--card-bg);border:1px solid var(--border-color);color:var(--text-main);display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);text-decoration:none;font-size:20px}
+.icon-action-btn:hover{border-color:var(--accent)}
+.whatsapp-btn{color:#22c55e}
+.top-box{text-align:center;margin-bottom:22px}
+.logo-container{width:100px;height:100px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle, #2563eb 0%, #0f172a 75%);border:2px solid #60a5fa;display:grid;place-items:center;box-shadow:0 0 30px rgba(59, 130, 246, 0.5)}
+.logo-inner{font-weight:900;font-size:28px;color:#fff;letter-spacing:1px}
+.company-title{font-size:22px;font-weight:900;letter-spacing:1.5px;color:#fff;margin-top:6px}
+.main-card{background:var(--card-bg);backdrop-filter:blur(12px);border:1px solid var(--border-color);border-radius:28px;padding:22px;box-shadow:var(--glow-shadow), 0 10px 30px rgba(0,0,0,0.5)}
 .field-group{margin-bottom:16px}
-.field-label{font-size:14px;color:var(--muted);margin-bottom:6px;display:block;text-align:right}
-.field-row{display:flex;align-items:center;background:#0b1329;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.field-value{flex:1;padding:12px 14px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0}
-.copy-btn{background:var(--btn-bg);color:#93c5fd;border:0;border-right:1px solid var(--border);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:46px}
-.pill{display:inline-block;font-size:12px;padding:4px 12px;border-radius:99px;background:#172554;color:#60a5fa;font-weight:700;margin-bottom:16px;border:1px solid #1e3a8a}
+.field-label{font-size:13px;color:var(--text-muted);margin-bottom:6px;display:block;text-align:right;font-weight:600}
+.field-row{display:flex;align-items:center;background:var(--input-bg);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden}
+.field-value{flex:1;padding:12px 16px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0;font-weight:500}
+.copy-btn{background:rgba(37, 99, 235, 0.15);color:#93c5fd;border:0;border-right:1px solid rgba(255,255,255,0.08);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:48px}
+.copy-btn.copied{background:#16a34a;color:#fff}
+.pill{display:inline-block;font-size:12px;padding:5px 14px;border-radius:99px;background:rgba(37, 99, 235, 0.2);color:#93c5fd;font-weight:700;margin-bottom:16px;border:1px solid rgba(59, 130, 246, 0.3)}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="header-actions">
+    <a href="https://wa.me/" target="_blank" class="icon-action-btn whatsapp-btn" title="واتسئەپ">💬</a>
+    <button type="button" class="icon-action-btn" data-rep-open title="داواکاری گۆڕین">✏️</button>
+  </div>
   <div class="top-box">
     <div class="logo-container"><div class="logo-inner">DB</div></div>
     <div class="company-title">COMPANY DU BRA</div>
   </div>
   <div class="main-card">
-    <button type="button" class="edit-icon-btn" data-rep-open title="داواکاری گۆڕین">✏️</button>
     <span class="pill">{{status}}</span>
     {{rows}}
   </div>
@@ -87,11 +248,11 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","No
 </html>`;
 
 const REPORT_BTN='<div class="dubra-rep" style="margin-top:16px">'+
-  '<div data-rep-form style="display:none;gap:8px;background:#0b1329;padding:16px;border-radius:16px;border:1px solid #1e3a8a">'+
-  '<div style="font-weight:700;font-size:14px;color:#93c5fd;margin-bottom:4px">داواکاری گۆڕین</div>'+
-  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی..." style="width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #1e3a8a;font:inherit;resize:vertical;background:#070b12;color:#fff"></textarea>'+
-  '<button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:#2563eb;color:#fff;font:inherit;font-weight:700;cursor:pointer">ناردنی داواکاری</button></div>'+
-  '<p data-rep-msg style="margin:8px 0 0;text-align:center;font-weight:700;font-size:14px"></p></div>';
+  '<div data-rep-form style="display:none;gap:10px;background:rgba(15, 23, 42, 0.9);padding:18px;border-radius:20px;border:1px solid rgba(59,130,246,0.4);backdrop-filter:blur(10px)">'+
+  '<div style="font-weight:700;font-size:14px;color:#93c5fd;margin-bottom:2px">داواکاری گۆڕین</div>'+
+  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی خۆت لێرە بنووسە..." style="width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);font:inherit;resize:vertical;background:rgba(7,11,18,0.7);color:#fff"></textarea>'+
+  '<button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font:inherit;font-weight:700;cursor:pointer">ناردنی داواکاری</button></div>'+
+  '<p data-rep-msg style="margin:10px 0 0;text-align:center;font-weight:700;font-size:14px"></p></div>';
 
 function fillTpl(tpl,d){
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -102,7 +263,6 @@ function fillTpl(tpl,d){
     if (x === null || String(x).trim() === '') return '';
     let valHtml = esc(x);
     let dirAttr = 'dir="ltr"';
-    
     const label = esc(customLabels[i] || h[i] || ('زانیاری ' + (i + 1)));
     
     return `<div class="field-group">
