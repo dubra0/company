@@ -15,7 +15,11 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","No
 .logo-inner{font-weight:900;font-size:22px;color:#fff;letter-spacing:1px}
 .company-title{font-size:20px;font-weight:900;letter-spacing:1px;color:#fff;margin-top:8px}
 
-.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3)}
+.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3);position:relative}
+
+/* Small edit request icon button at top-left inside card */
+.edit-icon-btn{position:absolute;top:16px;left:16px;background:#172554;border:1px solid var(--border);color:#93c5fd;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;cursor:pointer;font-size:16px;transition:background 0.2s}
+.edit-icon-btn:hover{background:#1d4ed8;color:#fff}
 
 .field-group{margin-bottom:16px}
 .field-label{font-size:14px;color:var(--muted);margin-bottom:6px;display:block;text-align:right}
@@ -56,14 +60,13 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","No
 .logo-container{width:90px;height:90px;margin:0 auto 12px;border-radius:50%;background:radial-gradient(circle, #1e3a8a 0%, #0f172a 70%);border:2px solid var(--glow);display:grid;place-items:center;box-shadow:0 0 20px rgba(59,130,246,0.4)}
 .logo-inner{font-weight:900;font-size:22px;color:#fff;letter-spacing:1px}
 .company-title{font-size:20px;font-weight:900;letter-spacing:1px;color:#fff;margin-top:8px}
-.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3)}
+.main-card{background:var(--card);border:2px solid var(--border);border-radius:24px;padding:20px;box-shadow:0 0 30px rgba(30,58,138,0.3);position:relative}
+.edit-icon-btn{position:absolute;top:16px;left:16px;background:#172554;border:1px solid var(--border);color:#93c5fd;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;cursor:pointer;font-size:16px}
 .field-group{margin-bottom:16px}
 .field-label{font-size:14px;color:var(--muted);margin-bottom:6px;display:block;text-align:right}
 .field-row{display:flex;align-items:center;background:#0b1329;border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .field-value{flex:1;padding:12px 14px;font-size:15px;color:#fff;word-break:break-word;background:transparent;border:0}
-.copy-btn{background:var(--btn-bg);color:#93c5fd;border:0;border-right:1px solid var(--border);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:46px;transition:background 0.2s}
-.copy-btn:hover{background:#1d4ed8;color:#fff}
-.copy-btn.copied{background:#15803d;color:#fff}
+.copy-btn{background:var(--btn-bg);color:#93c5fd;border:0;border-right:1px solid var(--border);padding:0 16px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;height:100%;min-height:46px}
 .pill{display:inline-block;font-size:12px;padding:4px 12px;border-radius:99px;background:#172554;color:#60a5fa;font-weight:700;margin-bottom:16px;border:1px solid #1e3a8a}
 </style>
 </head>
@@ -74,6 +77,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","No
     <div class="company-title">COMPANY DU BRA</div>
   </div>
   <div class="main-card">
+    <button type="button" class="edit-icon-btn" data-rep-open title="داواکاری گۆڕین">✏️</button>
     <span class="pill">{{status}}</span>
     {{rows}}
   </div>
@@ -82,12 +86,12 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:"Vazirmatn","No
 </body>
 </html>`;
 
-const REPORT_BTN='<div class="dubra-rep" style="margin-top:16px;display:grid;gap:8px">'+
-  '<button type="button" data-rep-open style="width:100%;padding:12px;border-radius:12px;border:1px solid #3b82f6;background:#172554;color:#93c5fd;font:inherit;font-weight:700;cursor:pointer">زانیارییەکە هەڵەیە؟ داواکاری گۆڕین</button>'+
-  '<div data-rep-form style="display:none;gap:8px">'+
-  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی..." style="width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #1e3a8a;font:inherit;resize:vertical;background:#0b1329;color:#fff"></textarea>'+
+const REPORT_BTN='<div class="dubra-rep" style="margin-top:16px">'+
+  '<div data-rep-form style="display:none;gap:8px;background:#0b1329;padding:16px;border-radius:16px;border:1px solid #1e3a8a">'+
+  '<div style="font-weight:700;font-size:14px;color:#93c5fd;margin-bottom:4px">داواکاری گۆڕین</div>'+
+  '<textarea data-rep-note maxlength="300" rows="3" placeholder="تێبینی..." style="width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #1e3a8a;font:inherit;resize:vertical;background:#070b12;color:#fff"></textarea>'+
   '<button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:#2563eb;color:#fff;font:inherit;font-weight:700;cursor:pointer">ناردنی داواکاری</button></div>'+
-  '<p data-rep-msg style="margin:0;text-align:center;font-weight:700;font-size:14px"></p></div>';
+  '<p data-rep-msg style="margin:8px 0 0;text-align:center;font-weight:700;font-size:14px"></p></div>';
 
 function fillTpl(tpl,d){
   const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -117,15 +121,23 @@ function fillTpl(tpl,d){
 
 function wireReport(){
   document.addEventListener('click',async e=>{
-    const box=e.target.closest('.dubra-rep'); if(!box) return;
+    const box=e.target.closest('.wrap'); if(!box) return;
     const form=box.querySelector('[data-rep-form]'), msg=box.querySelector('[data-rep-msg]');
-    if(e.target.closest('[data-rep-open]')){ form.style.display='grid'; e.target.closest('[data-rep-open]').style.display='none'; box.querySelector('[data-rep-note]').focus(); return; }
+    if(e.target.closest('[data-rep-open]')){ 
+      if(form) {
+        form.style.display = form.style.display === 'grid' ? 'none' : 'grid';
+        const note = box.querySelector('[data-rep-note]');
+        if(note && form.style.display === 'grid') note.focus();
+      }
+      return; 
+    }
     const send=e.target.closest('[data-rep-send]'); if(!send||send.disabled) return;
     send.disabled=true; msg.style.color=''; msg.textContent='چاوەڕێ بکە...';
     try{
       const r=await fetch('https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/report_qr',{method:'POST',headers:{'Content-Type':'application/json',apikey:KEY,Authorization:'Bearer '+KEY},body:JSON.stringify({p_code:code,p_note:box.querySelector('[data-rep-note]').value})}).then(r=>r.json());
       if(!r.ok) throw 0;
-      form.style.display='none'; msg.style.color='#60a5fa';
+      if(form) form.style.display='none'; 
+      msg.style.color='#60a5fa';
       msg.textContent=r.already?'داواکارییەکەت پێشتر نێردراوە.':'✅ داواکارییەکەت نێردرا.';
     }catch(err){ send.disabled=false; msg.style.color='#ef8a74'; msg.textContent='نەنێردرا، دووبارە هەوڵ بدەرەوە.'; }
   });
