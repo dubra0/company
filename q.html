@@ -36,7 +36,7 @@ html[lang="en"] body{font-family:var(--f-en)}
 .lang-btn{display:flex;align-items:center;gap:6px;font:inherit;font-family:var(--f-en);font-weight:700;font-size:.78rem;color:var(--ink);
   background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.03)}
 .lang-btn svg{width:16px;height:16px;color:var(--blue)}
-.lang-menu{position:absolute;top:calc(100 + 8px);inset-inline-end:0;min-width:150px;background:var(--card);border:1px solid var(--line);
+.lang-menu{position:absolute;top:calc(100% + 8px);inset-inline-end:0;min-width:150px;background:var(--card);border:1px solid var(--line);
   border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08);padding:6px;display:grid;gap:2px;z-index:10}
 .lang-menu button{font:inherit;font-size:.9rem;text-align:start;background:none;border:0;color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
 .lang-menu button:hover{background:var(--blue-light);color:var(--blue)}
@@ -91,6 +91,13 @@ html[dir="ltr"] .modal-text{text-align:left}
 .copy{font:inherit;font-size:.74rem;font-weight:700;border:0;color:#fff;background:var(--blue);border-radius:9px;padding:7px 12px;cursor:pointer;transition:background .2s;flex:none}
 .copy:hover{background:var(--blue-dark)}
 .copy.done{background:var(--ok)}
+
+.extra-box{background:linear-gradient(135deg, var(--blue-light), #ffffff);border:1px solid #bfdbfe;border-radius:14px;padding:14px;display:grid;gap:8px;box-shadow:0 4px 12px rgba(37,99,235,.05)}
+.extra-title{font-size:.75rem;font-weight:800;color:var(--blue-dark);letter-spacing:.05em}
+.extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.extra-item{background:rgba(255,255,255,0.8);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.extra-label{font-size:.65rem;font-weight:700;color:var(--muted)}
+.extra-val{font-family:var(--f-en);font-size:.95rem;font-weight:800;color:var(--ink);direction:ltr;text-align:start;overflow-wrap:anywhere}
 
 .otp-box-wrapper{background:var(--card);border:2px dashed var(--blue);border-radius:16px;padding:14px;display:grid;gap:10px;box-shadow:0 4px 15px rgba(37,99,235,.06);margin-top:2px}
 .otp-submit-btn{font:inherit;background:var(--blue);color:#fff;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:.92rem;cursor:pointer;transition:background .2s;width:100%;text-align:center;box-shadow:0 6px 16px rgba(37,99,235,.2)}
@@ -187,17 +194,17 @@ const T = {
         scanned:'یەکەم جار سکان کرا', again:'پێشتر سکان کراوە', email:'Email', password:'Password', copy:'کۆپی', copied:'کۆپی کرا ✓',
         invalid:'ئەم QR کۆدە دروست نییە یاخود بەردەست نییە', net:'پەیوەندی نەکرا. ئینتەرنێت بپشکنە.', error:'هەڵە', thanks:'سوپاس بۆ متمانەکەت', modalBtn:'تێگەیشتم، پیشاندانی زانیارییەکان',
         warningTitle:'⚠️ ئاگادارییەکی گرنگ', warningText:'تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.',
-        otpBtn:'وەرگرتنی کۆدی ناو لینک', repOpen:'زانیارییەکە هەڵەیە؟ داواکاری گۆڕین', repNote:'تێبینی (ئارەزوومەندانە)، بۆ نموونە: کۆدی کارتەکە کار ناکات', repSend:'ناردنی داواکاری', repWait:'چاوەڕێ بکە...', repDone:'✅ داواکارییەکەت نێردرا. دوای چارەسەرکردن، QR ـەکە دووبارە سکان بکەرەوە.', repAlready:'داواکارییەکەت پێشتر نێردراوە، بەم زووانە چارەسەر دەکرێت.', repErr:'نەنێردرا، تکایە دووبارە هەوڵ بدەرەوە.' },
+        otpBtn:'وەرگرتنی کۆدی ناو لینک', repOpen:'زانیارییەکە هەڵەیە؟ داواکاری گۆڕین (دەستبەجێ ناردن)', repSend:'ناردنی خێرای داواکاری گۆڕین', repWait:'چاوەڕێ بکە...', repDone:'✅ داواکارییەکەت ڕاستەوخۆ نێردرا. دوای چارەسەرکردن، QR ـەکە دووبارە سکان بکەرەوە.', repAlready:'داواکارییەکەت پێشتر نێردراوە، بەم زووانه چارەسەر دەکرێت.', repErr:'نەنێردرا، تکایە دووبارە هەوڵ بدەرەوە.' },
   ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
         scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', email:'Email', password:'Password', copy:'نسخ', copied:'تم النسخ ✓',
         invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
         warningTitle:'⚠️ تنبيه مهم', warningText:'يرجى عدم إدخال Apple ID هذا في إعدادات الهاتف (Settings) نهائياً! قم بإدخاله في App Store فقط.<br><br>عند الإدخال، يرجى وضعه مباشرة على رقم هاتفك.',
-        otpBtn:'الحصول على الرمز من الرابط', repOpen:'المعلومات غير صحيحة؟ طلب تعديل', repNote:'ملاحظة (اختيارية)، مثل: رمز البطاقة لا يعمل', repSend:'إرسال الطلب', repWait:'جاري الانتظار...', repDone:'✅ تم إرسال طلبك. بعد المعالجة، يرجى مسح رمز QR مرة أخرى.', repAlready:'تم إرسال طلبك مسبقاً، سيتم حل المشكلة قريباً.', repErr:'فشل الإرسال، يرجى المحاولة مرة أخرى.' },
+        otpBtn:'الحصول على الرمز من الرابط', repOpen:'المعلومات غير صحيحة؟ طلب تعديل مباشر', repSend:'إرسال طلب التعديل فوراً', repWait:'جاري الانتظار...', repDone:'✅ تم إرسال طلبك مباشرة. بعد المعالجة، يرجى مسح رمز QR مرة أخرى.', repAlready:'تم إرسال طلبك مسبقاً، سيتم حل المشكلة قريباً.', repErr:'فشل الإرسال، يرجى المحاولة مرة أخرى.' },
   en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
         scanned:'Scanned first time', again:'Already scanned', email:'Email', password:'Password', copy:'Copy', copied:'Copied ✓',
         invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
         warningTitle:'⚠ Important Warning', warningText:'Please do NOT sign in with this Apple ID in your phone Settings! Sign in via App Store only.<br><br>When signing in, please use your own mobile phone number directly.',
-        otpBtn:'Get code from link', repOpen:'Wrong information? Request change', repNote:'Note (optional), e.g., card code not working', repSend:'Send request', repWait:'Please wait...', repDone:'✅ Request sent. After resolution, scan the QR code again.', repAlready:'Your request was already submitted, it will be resolved soon.', repErr:'Failed to send, please try again.' }
+        otpBtn:'Get code from link', repOpen:'Wrong information? Instant request change', repSend:'Send request instantly', repWait:'Please wait...', repDone:'✅ Request sent instantly. After resolution, scan the QR code again.', repAlready:'Your request was already submitted, it will be resolved soon.', repErr:'Failed to send, please try again.' }
 };
 
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(e){} } };
@@ -280,6 +287,8 @@ function render(){
   
   let emailVal = '';
   let passVal = '';
+  let extra3Val = '';
+  let extra4Val = '';
 
   values.forEach((val, i) => {
     if (val === null || String(val).trim() === '') return;
@@ -289,19 +298,19 @@ function render(){
     }
   });
 
-  //خانەی یەکەم و دووەم دیاریکراو (Email و Password)
+  // دۆزینەوەی بەهای خانەکان بە پێی ڕیزبەندی
+  let validIndex = 0;
   for (let i = 0; i < values.length; i++) {
     const val = values[i];
     if (val === null || String(val).trim() === '') continue;
     const strVal = String(val).trim();
     if (strVal.startsWith('http://') || strVal.startsWith('https://')) continue;
 
-    if (!emailVal) {
-      emailVal = strVal;
-    } else if (!passVal) {
-      passVal = strVal;
-      break;
-    }
+    if (validIndex === 0) emailVal = strVal;
+    else if (validIndex === 1) passVal = strVal;
+    else if (validIndex === 2) extra3Val = strVal;
+    else if (validIndex === 3) extra4Val = strVal;
+    validIndex++;
   }
 
   let html = '<div class="credentials-container">';
@@ -332,6 +341,35 @@ function render(){
 
   html += '</div>';
 
+  // بۆکسی جوان بۆ زانیاری ٣ و ٤ ئەگەر هەبن
+  if (extra3Val || extra4Val) {
+    html += `
+      <div class="extra-box">
+        <div class="extra-title">زانیاری زیاتری کارت (Extra Info)</div>
+        <div class="extra-grid">
+    `;
+    if (extra3Val) {
+      html += `
+          <div class="extra-item">
+            <div class="extra-label">Info 3</div>
+            <div class="extra-value" style="font-family:var(--f-en);font-size:.95rem;font-weight:800;color:var(--blue-dark);direction:ltr;text-align:start;overflow-wrap:anywhere">${esc(fmt(extra3Val))}</div>
+          </div>
+      `;
+    }
+    if (extra4Val) {
+      html += `
+          <div class="extra-item">
+            <div class="extra-label">Info 4</div>
+            <div class="extra-value" style="font-family:var(--f-en);font-size:.95rem;font-weight:800;color:var(--blue-dark);direction:ltr;text-align:start;overflow-wrap:anywhere">${esc(fmt(extra4Val))}</div>
+          </div>
+      `;
+    }
+    html += `
+        </div>
+      </div>
+    `;
+  }
+
   if (targetLinkURL) {
     html += `
       <div class="otp-box-wrapper">
@@ -343,13 +381,13 @@ function render(){
 
   box.innerHTML = html;
 
+  // دوگمەی خێرای ناردنی داواکاری گۆڕین (تەنها یەک کلیک)
   reportContainer.innerHTML = `
     <div class="dubra-rep" style="margin-top:12px;display:grid;gap:8px">
-      <button type="button" data-rep-open style="width:100%;padding:12px;border-radius:12px;border:1px solid #fecaca;background:#FEF2F2;color:#DC2626;font:inherit;font-weight:700;cursor:pointer;font-size:0.9rem">${t.repOpen}</button>
-      <div data-rep-form style="display:none;gap:8px">
-        <textarea data-rep-note maxlength="300" rows="3" placeholder="${t.repNote}" style="width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid var(--line);font:inherit;resize:vertical;background:var(--card);color:var(--ink)"></textarea>
-        <button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:#DC2626;color:#fff;font:inherit;font-weight:700;cursor:pointer">${t.repSend}</button>
-      </div>
+      <button type="button" data-rep-send style="width:100%;padding:14px;border-radius:14px;border:0;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;font:inherit;font-weight:800;cursor:pointer;font-size:0.95rem;box-shadow:0 6px 16px rgba(239,68,68,0.25);display:flex;align-items:center;justify-content:center;gap:8px">
+        <svg style="width:18px;height:18px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <span>${t.repOpen}</span>
+      </button>
       <p data-rep-msg style="margin:0;text-align:center;font-weight:700;font-size:0.85rem"></p>
     </div>
   `;
@@ -426,15 +464,7 @@ function render(){
 document.addEventListener('click', async e => {
   const dubraRepBox = e.target.closest('.dubra-rep');
   if (!dubraRepBox) return;
-  const form = dubraRepBox.querySelector('[data-rep-form]');
   const msg = dubraRepBox.querySelector('[data-rep-msg]');
-  
-  if (e.target.closest('[data-rep-open]')) {
-    form.style.display = 'grid';
-    e.target.closest('[data-rep-open]').style.display = 'none';
-    dubraRepBox.querySelector('[data-rep-note]').focus();
-    return;
-  }
   
   const send = e.target.closest('[data-rep-send]');
   if (!send || send.disabled) return;
@@ -446,11 +476,10 @@ document.addEventListener('click', async e => {
     const r = await fetch(REPORT_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', apikey: KEY, Authorization: 'Bearer ' + KEY },
-      body: JSON.stringify({ p_code: code, p_note: dubraRepBox.querySelector('[data-rep-note]').value })
+      body: JSON.stringify({ p_code: code, p_note: 'تکایە گۆڕین - داواکاری خێرا' })
     }).then(res => res.json());
 
     if (!r.ok) throw 0;
-    form.style.display = 'none';
     msg.style.color = 'var(--ok)';
     msg.textContent = r.already ? T[lang || 'ku'].repAlready : T[lang || 'ku'].repDone;
   } catch(err) {
