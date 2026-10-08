@@ -225,7 +225,6 @@ let state = { kind: 'loading' };
 let otpInterval = null;
 let lastDetectedOtp = '';
 
-// سیستمی دەنگی بۆ هاتنی کۆدی نوێ (Web Audio API بی دەنگ و خێرا)
 function playNotificationSound() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -236,8 +235,8 @@ function playNotificationSound() {
     const gain = ctx.createGain();
     
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-    osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1); // A5
+    osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+    osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1);
     
     gain.gain.setValueAtTime(0.15, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
@@ -372,7 +371,6 @@ function render(){
 
   html += '</div>';
 
-  // بەشی ئۆتپی (OTP) لەگەڵ دگمەی نوێکردنەوە (Update)
   if (otpLink) {
     html += `
       <div class="otp-box">
@@ -479,10 +477,9 @@ async function fetchOtp(url, isManual = false) {
     }
 
     if (codeVal) {
-      // ئەگەر کۆدی نوێ هات و جیاواز بوو لە کۆدی پێشوو، یان بە دەستی داواکرا
       if (codeVal !== lastDetectedOtp || isManual) {
         if (codeVal !== lastDetectedOtp && lastDetectedOtp !== '') {
-          playNotificationSound(); // لێدانی دەنگ کاتێک کۆدی نوێ دێت
+          playNotificationSound();
         }
         lastDetectedOtp = codeVal;
       }
