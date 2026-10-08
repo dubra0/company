@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap">
 <style>
 :root{
-  --bg:#F0F4F8; --card:#FFFFFF; --line:#DCE4ED; --ink:#0D2137; --muted:#5A6E85;
-  --blue:#0051FF; --blue-dark:#0A3663; --blue-light:#E6ECFF;
+  --bg:#F4F7FC; --card:#FFFFFF; --line:#E2E8F0; --ink:#0F172A; --muted:#64748B;
+  --blue:#2563EB; --blue-dark:#1E3A8A; --blue-light:#EFF6FF;
   --ok:#10B981; --bad:#EF4444;
   --f-ku:"Vazirmatn",Tahoma,sans-serif; --f-en:"Outfit","Vazirmatn",system-ui,sans-serif;
   color-scheme:light;
@@ -21,95 +21,86 @@
 [hidden]{display:none!important}
 html,body{margin:0}
 body{min-height:100vh;background:var(--bg);color:var(--ink);font-family:var(--f-ku);line-height:1.65;overflow-x:hidden;
-  background-image: radial-gradient(800px 400px at 50% 0%, rgba(0,81,255,.08), transparent 70%);
+  background-image: radial-gradient(circle at 50% 0%, rgba(37,99,235,.06) 0%, transparent 60%);
   background-attachment:fixed}
 html[lang="en"] body{font-family:var(--f-en)}
 
-.wrap{position:relative;max-width:460px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom));display:grid;gap:18px}
+.wrap{position:relative;max-width:440px;margin:0 auto;padding:max(16px,env(safe-area-inset-top)) 16px max(32px,env(safe-area-inset-bottom));display:grid;gap:16px}
 
 .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .brand{display:flex;align-items:center;gap:10px}
-.brand b{font-weight:900;font-size:1.05rem;color:var(--blue-dark)}
-.brand small{display:block;font-family:var(--f-en);font-size:.62rem;letter-spacing:.2em;color:var(--blue);margin-top:-2px;direction:ltr;text-align:start}
+.brand b{font-weight:900;font-size:1.1rem;color:var(--blue-dark)}
+.brand small{display:block;font-family:var(--f-en);font-size:.62rem;letter-spacing:.2em;color:var(--blue);margin-top:-3px;direction:ltr;text-align:start}
 
 .lang{position:relative}
 .lang-btn{display:flex;align-items:center;gap:6px;font:inherit;font-family:var(--f-en);font-weight:700;font-size:.78rem;color:var(--ink);
-  background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 12px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+  background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 12px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.03)}
 .lang-btn svg{width:16px;height:16px;color:var(--blue)}
-.lang-menu{position:absolute;top:calc(100% + 8px);inset-inline-end:0;min-width:160px;background:var(--card);border:1px solid var(--line);
-  border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.1);padding:6px;display:grid;gap:2px;z-index:10}
-.lang-menu button{font:inherit;font-size:.95rem;text-align:start;background:none;border:0;color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
+.lang-menu{position:absolute;top:calc(100 + 8px);inset-inline-end:0;min-width:150px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08);padding:6px;display:grid;gap:2px;z-index:10}
+.lang-menu button{font:inherit;font-size:.9rem;text-align:start;background:none;border:0;color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
 .lang-menu button:hover{background:var(--blue-light);color:var(--blue)}
 .lang-menu button[aria-checked="true"]{color:var(--blue);font-weight:800}
-.lang-menu button[aria-checked="true"]::after{content:"●";font-size:.6rem;align-self:center}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
-.hero{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 20px 20px;overflow:hidden;box-shadow:0 14px 40px rgba(0,54,103,.08);text-align:center;display:grid;justify-items:center;gap:8px}
+.hero{position:relative;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 18px 18px;box-shadow:0 10px 30px rgba(15,23,42,.04);text-align:center;display:grid;justify-items:center;gap:8px}
 
-.apple-box{width:86px;height:86px;border-radius:22px;background:linear-gradient(145deg,#0051FF,#0A3663);display:grid;place-items:center;box-shadow:0 12px 25px rgba(0,81,255,.3);margin-bottom:4px}
-.apple-box svg{width:46px;height:46px;fill:#fff}
+.apple-box{width:76px;height:76px;border-radius:20px;background:linear-gradient(135deg,#2563EB,#1E3A8A);display:grid;place-items:center;box-shadow:0 10px 20px rgba(37,99,235,.25);margin-bottom:2px}
+.apple-box svg{width:40px;height:40px;fill:#fff}
 
-.hero h1{margin:0;font-family:var(--f-en);font-size:1.8rem;font-weight:900;letter-spacing:.04em;color:var(--blue-dark);line-height:1.1}
-.hero .sub-title{font-size:.9rem;font-weight:700;color:var(--muted);margin-top:-2px}
-.hero .apple-id-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-en);font-weight:700;font-size:.78rem;color:var(--blue);background:var(--blue-light);padding:4px 12px;border-radius:99px;margin-top:2px}
+.hero h1{margin:0;font-family:var(--f-en);font-size:1.6rem;font-weight:900;letter-spacing:.02em;color:var(--blue-dark);line-height:1.1}
+.hero .sub-title{font-size:.85rem;font-weight:700;color:var(--muted);margin-top:-2px}
+.hero .apple-id-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-en);font-weight:700;font-size:.75rem;color:var(--blue);background:var(--blue-light);padding:4px 12px;border-radius:99px;margin-top:2px}
 
-.hero-foot{width:100%;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
-.state{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.8rem;padding:4px 10px;border-radius:99px;background:var(--bg)}
-.state i{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.hero-foot{width:100%;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.state{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.78rem;padding:4px 10px;border-radius:99px;background:var(--bg)}
+.state i{width:6px;height:6px;border-radius:50%;background:var(--muted)}
 .state.ok{color:var(--ok);background:rgba(16,185,129,.1)} .state.ok i{background:var(--ok)}
 .state.bad{color:var(--bad);background:rgba(239,68,68,.1)} .state.bad i{background:var(--bad)}
-.stamp{font-family:var(--f-en);font-size:.72rem;color:var(--muted)}
+.stamp{font-family:var(--f-en);font-size:.7rem;color:var(--muted)}
 
-.lang-modal-overlay{position:fixed;inset:0;background:rgba(10,33,99,.75);backdrop-filter:blur(8px);z-index:1000;display:grid;place-items:center;padding:20px;animation:fadeIn .25s ease}
-.lang-select-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 20px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25);display:grid;gap:16px;animation:scaleUp .25s ease}
-.lang-select-title{font-weight:900;font-size:1.15rem;color:var(--blue-dark);margin:0}
+.lang-modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.7);backdrop-filter:blur(6px);z-index:1000;display:grid;place-items:center;padding:20px;animation:fadeIn .2s ease}
+.lang-select-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px 20px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.2);display:grid;gap:16px;animation:scaleUp .2s ease}
+.lang-select-title{font-weight:900;font-size:1.1rem;color:var(--blue-dark);margin:0}
 .lang-options{display:grid;gap:10px}
-.lang-option-btn{background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:14px;border-radius:14px;font-weight:800;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.lang-option-btn{background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:12px;border-radius:12px;font-weight:800;font-size:.95rem;cursor:pointer;transition:all .2s}
 .lang-option-btn:hover{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
 
-.modal-overlay{position:fixed;inset:0;background:rgba(10,33,99,.65);backdrop-filter:blur(8px);z-index:999;display:grid;place-items:center;padding:20px;animation:fadeIn .25s ease}
-.modal-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:26px 20px;max-width:400px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25);display:grid;gap:16px;animation:scaleUp .25s ease}
-.modal-logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(145deg,#0051FF,#0A3663);display:grid;place-items:center;margin:0 auto;box-shadow:0 10px 22px rgba(0,81,255,.3)}
-.modal-logo svg{width:38px;height:38px;fill:#fff}
-.modal-title{color:var(--bad);font-weight:900;font-size:1.1rem;display:flex;align-items:center;justify-content:center;gap:6px;margin:0}
-.modal-text{font-size:.88rem;color:var(--ink);line-height:1.7;text-align:right}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(6px);z-index:999;display:grid;place-items:center;padding:20px;animation:fadeIn .2s ease}
+.modal-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 20px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.2);display:grid;gap:14px;animation:scaleUp .2s ease}
+.modal-logo{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#2563EB,#1E3A8A);display:grid;place-items:center;margin:0 auto;box-shadow:0 8px 18px rgba(37,99,235,.25)}
+.modal-logo svg{width:34px;height:34px;fill:#fff}
+.modal-title{color:var(--bad);font-weight:900;font-size:1.05rem;display:flex;align-items:center;justify-content:center;gap:6px;margin:0}
+.modal-text{font-size:.85rem;color:var(--ink);line-height:1.6;text-align:right}
 html[dir="ltr"] .modal-text{text-align:left}
-.modal-btn{background:linear-gradient(135deg,#0051FF,#0A3663);color:#fff;border:0;padding:14px;border-radius:14px;font-weight:800;font-size:.95rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,81,255,.25)}
+.modal-btn{background:linear-gradient(135deg,#2563EB,#1E3A8A);color:#fff;border:0;padding:12px;border-radius:12px;font-weight:800;font-size:.92rem;cursor:pointer;box-shadow:0 6px 16px rgba(37,99,235,.2)}
 
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes scaleUp{from{transform:scale(0.92);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes scaleUp{from{transform:scale(0.94);opacity:0}to{transform:scale(1);opacity:1}}
 
-.sheet{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;display:grid;gap:12px;box-shadow:0 8px 30px rgba(0,0,0,.04)}
-.sheet-h{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:.95rem;color:var(--blue-dark)}
-.sheet-h span{font-family:var(--f-en);font-size:.7rem;font-weight:600;letter-spacing:.15em;color:var(--muted)}
+.sheet{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;display:grid;gap:12px;box-shadow:0 4px 20px rgba(15,23,42,.03)}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:.9rem;color:var(--blue-dark)}
+.sheet-h span{font-family:var(--f-en);font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--muted)}
 
-.list{display:grid;gap:10px;margin:0}
-.item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
-.item .ic{flex:none;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--blue-light);color:var(--blue)}
-.item .ic svg{width:18px;height:18px}
-.tx{display:grid;min-width:0;width:100%}
-.item dt{font-size:.72rem;color:var(--muted)}
-.item dd{margin:0;font-size:1.05rem;font-weight:700;color:var(--ink);overflow-wrap:anywhere;text-align:start}
+.credentials-container{display:grid;gap:10px}
+.credential-card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.credential-info{display:grid;min-width:0;width:100%}
+.credential-label{font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:2px}
+.credential-value{margin:0;font-family:var(--f-en);font-size:1.05rem;font-weight:800;color:var(--blue-dark);direction:ltr;text-align:start;overflow-wrap:anywhere}
 
-.vault{border-radius:16px;padding:14px;display:grid;gap:10px;background:linear-gradient(135deg,rgba(0,81,255,.04),rgba(0,81,255,.01));border:1px solid rgba(0,81,255,.15)}
-.vault-t{display:flex;align-items:center;gap:6px;font-weight:800;font-size:.85rem;color:var(--blue)}
-.vault-t svg{width:16px;height:16px}
-.vrow{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
-.vrow dt{font-size:.7rem;color:var(--muted)}
-.vrow dd{margin:0;font-family:var(--f-en);font-size:1.05rem;font-weight:800;letter-spacing:.02em;direction:ltr;color:var(--blue-dark)}
-.copy{font:inherit;font-size:.75rem;font-weight:700;border:0;color:#fff;background:var(--blue);border-radius:8px;padding:6px 12px;cursor:pointer;transition:background .2s}
+.copy{font:inherit;font-size:.74rem;font-weight:700;border:0;color:#fff;background:var(--blue);border-radius:9px;padding:7px 12px;cursor:pointer;transition:background .2s;flex:none}
 .copy:hover{background:var(--blue-dark)}
 .copy.done{background:var(--ok)}
 
-.otp-box-wrapper{background:var(--card);border:2px dashed var(--blue);border-radius:16px;padding:16px;display:grid;gap:12px;box-shadow:0 6px 20px rgba(0,81,255,.08);margin-top:4px}
-.otp-submit-btn{font:inherit;background:var(--blue);color:#fff;border:0;border-radius:14px;padding:14px;font-weight:800;font-size:1rem;cursor:pointer;transition:background .2s;width:100%;text-align:center;box-shadow:0 8px 20px rgba(0,81,255,.25)}
+.otp-box-wrapper{background:var(--card);border:2px dashed var(--blue);border-radius:16px;padding:14px;display:grid;gap:10px;box-shadow:0 4px 15px rgba(37,99,235,.06);margin-top:2px}
+.otp-submit-btn{font:inherit;background:var(--blue);color:#fff;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:.92rem;cursor:pointer;transition:background .2s;width:100%;text-align:center;box-shadow:0 6px 16px rgba(37,99,235,.2)}
 .otp-submit-btn:hover{background:var(--blue-dark)}
-.otp-result-display{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;animation:fadeIn .3s ease}
-.otp-code-text{font-family:var(--f-en);font-size:1.4rem;font-weight:900;letter-spacing:.15em;color:var(--blue-dark);direction:ltr}
+.otp-result-display{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;animation:fadeIn .25s ease}
+.otp-code-text{font-family:var(--f-en);font-size:1.3rem;font-weight:900;letter-spacing:.12em;color:var(--blue-dark);direction:ltr}
 
-.foot{text-align:center;font-size:.78rem;color:var(--muted);display:grid;gap:4px}
+.foot{text-align:center;font-size:.75rem;color:var(--muted);display:grid;gap:2px;margin-top:4px}
 .foot b{color:var(--blue-dark)}
-.err{background:#fbe9e5;color:#b4432f;font-weight:700;padding:16px;border-radius:14px;text-align:center}
+.err{background:#FEF2F2;color:#DC2626;font-weight:700;padding:14px;border-radius:12px;text-align:center;font-size:.9rem}
 </style>
 </head>
 <body>
@@ -119,7 +110,7 @@ html[dir="ltr"] .modal-text{text-align:left}
       <div class="modal-logo" style="margin-bottom:0">
         <svg viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.13-1.9-14.34-6.08-3.05-2.6-6.88-7.15-11.48-13.65-6.19-8.71-11.05-18.27-14.59-28.67-3.53-10.4-5.3-20.35-5.3-29.86 0-14.37 3.73-25.7 11.19-34 7.46-8.3 16.63-12.51 27.51-12.62 4.9 0 10.03 1.25 15.39 3.75 5.36 2.5 8.93 3.75 10.72 3.75 1.74 0 5.48-1.32 11.22-3.95 5.75-2.64 10.85-3.86 15.32-3.65 11.23.44 20.37 4.7 27.42 12.78-10.15 6.22-15.11 15.37-14.88 27.46.22 9.5 3.97 17.29 11.25 23.37 7.29 6.08 16.03 9.3 26.22 9.66-2.07 6.43-4.8 13.56-8.19 21.39z"/></svg>
       </div>
-      <h3 class="lang-select-title">تکایە زمانێک هەڵبژێرە<br><span style="font-size:0.85rem;color:var(--muted);font-weight:500">Please select your language</span></h3>
+      <h3 class="lang-select-title">تکایە زمانێک هەڵبژێرە<br><span style="font-size:0.8rem;color:var(--muted);font-weight:500">Please select your language</span></h3>
       <div class="lang-options">
         <button class="lang-option-btn" type="button" onclick="selectInitialLang('ku')">کوردی (Kurdish)</button>
         <button class="lang-option-btn" type="button" onclick="selectInitialLang('ar')">العربية (Arabic)</button>
@@ -193,17 +184,17 @@ const KEY = 'sb_publishable_HFxscwwTWxXEspJEnpJgFA_Ib4A5cAQ';
 
 const T = {
   ku: { dir:'rtl', code:'KU', title:'زانیاری کارت', checking:'پشکنین…',
-        scanned:'یەکەم جار سکان کرا', again:'پێشتر سکان کراوە', vault:'زانیاری تایبەت', copy:'کۆپی', copied:'کۆپی کرا ✓',
+        scanned:'یەکەم جار سکان کرا', again:'پێشتر سکان کراوە', email:'Email', password:'Password', copy:'کۆپی', copied:'کۆپی کرا ✓',
         invalid:'ئەم QR کۆدە دروست نییە یاخود بەردەست نییە', net:'پەیوەندی نەکرا. ئینتەرنێت بپشکنە.', error:'هەڵە', thanks:'سوپاس بۆ متمانەکەت', modalBtn:'تێگەیشتم، پیشاندانی زانیارییەکان',
         warningTitle:'⚠️ ئاگادارییەکی گرنگ', warningText:'تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.',
         otpBtn:'وەرگرتنی کۆدی ناو لینک', repOpen:'زانیارییەکە هەڵەیە؟ داواکاری گۆڕین', repNote:'تێبینی (ئارەزوومەندانە)، بۆ نموونە: کۆدی کارتەکە کار ناکات', repSend:'ناردنی داواکاری', repWait:'چاوەڕێ بکە...', repDone:'✅ داواکارییەکەت نێردرا. دوای چارەسەرکردن، QR ـەکە دووبارە سکان بکەرەوە.', repAlready:'داواکارییەکەت پێشتر نێردراوە، بەم زووانە چارەسەر دەکرێت.', repErr:'نەنێردرا، تکایە دووبارە هەوڵ بدەرەوە.' },
   ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
-        scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', vault:'معلومات خاصة', copy:'نسخ', copied:'تم النسخ ✓',
+        scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', email:'Email', password:'Password', copy:'نسخ', copied:'تم النسخ ✓',
         invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
         warningTitle:'⚠️ تنبيه مهم', warningText:'يرجى عدم إدخال Apple ID هذا في إعدادات الهاتف (Settings) نهائياً! قم بإدخاله في App Store فقط.<br><br>عند الإدخال، يرجى وضعه مباشرة على رقم هاتفك.',
         otpBtn:'الحصول على الرمز من الرابط', repOpen:'المعلومات غير صحيحة؟ طلب تعديل', repNote:'ملاحظة (اختيارية)، مثل: رمز البطاقة لا يعمل', repSend:'إرسال الطلب', repWait:'جاري الانتظار...', repDone:'✅ تم إرسال طلبك. بعد المعالجة، يرجى مسح رمز QR مرة أخرى.', repAlready:'تم إرسال طلبك مسبقاً، سيتم حل المشكلة قريباً.', repErr:'فشل الإرسال، يرجى المحاولة مرة أخرى.' },
   en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
-        scanned:'Scanned first time', again:'Already scanned', vault:'Private details', copy:'Copy', copied:'Copied ✓',
+        scanned:'Scanned first time', again:'Already scanned', email:'Email', password:'Password', copy:'Copy', copied:'Copied ✓',
         invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
         warningTitle:'⚠ Important Warning', warningText:'Please do NOT sign in with this Apple ID in your phone Settings! Sign in via App Store only.<br><br>When signing in, please use your own mobile phone number directly.',
         otpBtn:'Get code from link', repOpen:'Wrong information? Request change', repNote:'Note (optional), e.g., card code not working', repSend:'Send request', repWait:'Please wait...', repDone:'✅ Request sent. After resolution, scan the QR code again.', repAlready:'Your request was already submitted, it will be resolved soon.', repErr:'Failed to send, please try again.' }
@@ -251,14 +242,6 @@ closeModalBtn.onclick = () => {
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = v => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(v)) ? v.slice(0, 10) : v;
 
-const ICONS = [
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20 12l-8 8-9-9V4h7z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9v.01M18 15v.01"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'
-];
-
 function updateTexts() {
   const t = T[lang || 'ku'];
   document.documentElement.lang = lang === 'ku' ? 'ckb' : (lang || 'ku');
@@ -278,7 +261,7 @@ function render(){
 
   if (state.kind === 'loading') {
     st.className = 'state'; stx.textContent = t.checking;
-    box.innerHTML = '<div class="list"><div style="height:50px;background:var(--bg);border-radius:12px"></div></div>';
+    box.innerHTML = '<div style="height:90px;background:var(--bg);border-radius:12px"></div>';
     reportContainer.innerHTML = '';
     return;
   }
@@ -292,44 +275,62 @@ function render(){
   const d = state.data;
   st.className = 'state ok'; stx.textContent = d.first ? t.scanned : t.again;
   
-  const headers = d.headers || [];
   const values = d.data || [];
-  let html = '';
   let targetLinkURL = '';
-
-  const mainIndices = [];
-  const vaultIndices = [];
+  
+  let emailVal = '';
+  let passVal = '';
 
   values.forEach((val, i) => {
     if (val === null || String(val).trim() === '') return;
     const strVal = String(val).trim();
-    const headerName = String(headers[i] || '').trim();
-
-    if (strVal.startsWith('http://') || strVal.startsWith('https://') || i === 2) {
+    if (strVal.startsWith('http://') || strVal.startsWith('https://')) {
       targetLinkURL = strVal;
-    }
-
-    if (i < 2 || headerName.toLowerCase().includes('apple') || headerName.toLowerCase().includes('email') || headerName.toLowerCase().includes('ناوی')) {
-      mainIndices.push(i);
-    } else {
-      vaultIndices.push(i);
     }
   });
 
-  if (mainIndices.length || true) {
-    html += '<dl class="list">';
-    values.forEach((val, i) => {
-      if (val === null || String(val).trim() === '') return;
-      const strVal = String(val).trim();
-      if (strVal.startsWith('http://') || strVal.startsWith('https://')) return;
-      
-      const h = headers[i] || ('زانیاری ' + (i + 1));
-      const iconHTML = ICONS[i % ICONS.length];
-      
-      html += `<div class="item"><span class="ic">${iconHTML}</span><div class="tx"><dt>${esc(h)}</dt><dd>${esc(fmt(val))}</dd></div></div>`;
-    });
-    html += '</dl>';
+  //خانەی یەکەم و دووەم دیاریکراو (Email و Password)
+  for (let i = 0; i < values.length; i++) {
+    const val = values[i];
+    if (val === null || String(val).trim() === '') continue;
+    const strVal = String(val).trim();
+    if (strVal.startsWith('http://') || strVal.startsWith('https://')) continue;
+
+    if (!emailVal) {
+      emailVal = strVal;
+    } else if (!passVal) {
+      passVal = strVal;
+      break;
+    }
   }
+
+  let html = '<div class="credentials-container">';
+  
+  if (emailVal) {
+    html += `
+      <div class="credential-card">
+        <div class="credential-info">
+          <div class="credential-label">${t.email}</div>
+          <div class="credential-value">${esc(fmt(emailVal))}</div>
+        </div>
+        <button class="copy" type="button" data-v="${esc(fmt(emailVal))}">${t.copy}</button>
+      </div>
+    `;
+  }
+
+  if (passVal) {
+    html += `
+      <div class="credential-card">
+        <div class="credential-info">
+          <div class="credential-label">${t.password}</div>
+          <div class="credential-value">${esc(fmt(passVal))}</div>
+        </div>
+        <button class="copy" type="button" data-v="${esc(fmt(passVal))}">${t.copy}</button>
+      </div>
+    `;
+  }
+
+  html += '</div>';
 
   if (targetLinkURL) {
     html += `
@@ -340,28 +341,16 @@ function render(){
     `;
   }
 
-  if (vaultIndices.length) {
-    html += '<div class="vault"><div class="vault-t">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>' + t.vault + '</div>';
-    vaultIndices.forEach(i => {
-      const h = headers[i] || ('تایبەتمەندی ' + (i + 1));
-      html += '<div class="vrow"><div class="tx"><dt>' + esc(h) + '</dt>' +
-              '<dd>' + esc(fmt(values[i])) + '</dd></div>' +
-              '<button class="copy" type="button" data-v="' + esc(fmt(values[i])) + '">' + t.copy + '</button></div>';
-    });
-    html += '</div>';
-  }
-
-  box.innerHTML = '<div style="display:grid;gap:12px">' + html + '</div>';
+  box.innerHTML = html;
 
   reportContainer.innerHTML = `
-    <div class="dubra-rep" style="margin-top:14px;display:grid;gap:8px">
-      <button type="button" data-rep-open style="width:100%;padding:14px;border-radius:14px;border:1px solid #e3b4aa;background:#fbe9e5;color:#b4432f;font:inherit;font-weight:700;cursor:pointer">${t.repOpen}</button>
+    <div class="dubra-rep" style="margin-top:12px;display:grid;gap:8px">
+      <button type="button" data-rep-open style="width:100%;padding:12px;border-radius:12px;border:1px solid #fecaca;background:#FEF2F2;color:#DC2626;font:inherit;font-weight:700;cursor:pointer;font-size:0.9rem">${t.repOpen}</button>
       <div data-rep-form style="display:none;gap:8px">
         <textarea data-rep-note maxlength="300" rows="3" placeholder="${t.repNote}" style="width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid var(--line);font:inherit;resize:vertical;background:var(--card);color:var(--ink)"></textarea>
-        <button type="button" data-rep-send style="width:100%;padding:14px;border-radius:14px;border:0;background:#b4432f;color:#fff;font:inherit;font-weight:700;cursor:pointer">${t.repSend}</button>
+        <button type="button" data-rep-send style="width:100%;padding:12px;border-radius:12px;border:0;background:#DC2626;color:#fff;font:inherit;font-weight:700;cursor:pointer">${t.repSend}</button>
       </div>
-      <p data-rep-msg style="margin:0;text-align:center;font-weight:700"></p>
+      <p data-rep-msg style="margin:0;text-align:center;font-weight:700;font-size:0.85rem"></p>
     </div>
   `;
 
@@ -411,7 +400,7 @@ function render(){
       otpDisplayArea.style.display = 'grid';
       otpDisplayArea.style.gap = '8px';
       otpDisplayArea.innerHTML = `
-        <div style="font-size:0.82rem;font-weight:800;color:var(--blue-dark);text-align:center">${lang==='ar'?'الرمز الموجود في الرابط:':(lang==='en'?'Code from link:':'کۆدی ناو لینکەکە:')}</div>
+        <div style="font-size:0.8rem;font-weight:800;color:var(--blue-dark);text-align:center">${lang==='ar'?'الرمز الموجود في الرابط:':(lang==='en'?'Code from link:':'کۆدی ناو لینکەکە:')}</div>
         <div class="otp-result-display">
           <span class="otp-code-text" id="otpCodeSpan">${fetchedCode}</span>
           <button class="copy" type="button" id="copyOtpBtn">${t.copy}</button>
