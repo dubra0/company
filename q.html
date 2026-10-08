@@ -96,13 +96,10 @@ html[dir="ltr"] .modal-text{text-align:left}
 .otp-header{display:flex;align-items:center;justify-content:space-between}
 .otp-title{font-size:.78rem;font-weight:800;color:#065f46;display:flex;align-items:center;gap:6px}
 .otp-actions{display:flex;align-items:center;gap:8px}
-.otp-live{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;color:var(--ok);background:rgba(16,185,129,.1);padding:2px 8px;border-radius:99px}
-.otp-live i{width:6px;height:6px;border-radius:50%;background:var(--ok);animation:pulse 1.5s infinite}
-@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
 
-.update-btn{font:inherit;font-size:.72rem;font-weight:700;border:1px solid #a7f3d0;color:#047857;background:#ffffff;border-radius:8px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all .2s}
+.update-btn{font:inherit;font-size:.72rem;font-weight:700;border:1px solid #a7f3d0;color:#047857;background:#ffffff;border-radius:8px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .2s}
 .update-btn:hover{background:#ecfdf5;border-color:#059669}
-.update-btn svg{width:12px;height:12px;transition:transform .4s}
+.update-btn svg{width:13px;height:13px;transition:transform .4s}
 .update-btn.spinning svg{transform:rotate(360deg)}
 
 .otp-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid #d1fae5;border-radius:10px;padding:10px 12px}
@@ -202,17 +199,17 @@ const KEY = 'sb_publishable_HFxscwwTWxXEspJEnpJgFA_Ib4A5cAQ';
 
 const T = {
   ku: { dir:'rtl', code:'KU', title:'زانیاری کارت', checking:'پشکنین…',
-        scanned:'یەکەم جار سکان کرا', again:'پێشتر سکان کراوە', email:'Email', password:'Password', otpTitle:'کۆدی دڵنیایی (OTP)', otpWait:'چاوەڕێی کۆد...', copy:'Kopî / کۆپی', copied:'کۆپی کرا ✓',
+        scanned:'یەکەم جار سکان کرا', again:'پێشتر سکان کراوە', email:'Email', password:'Password', otpTitle:'کۆدی دڵنیایی (OTP)', otpWait:'بۆ بینینی کۆد، دوگمەی نوێکردنەوە دابگرە...', copy:'Kopî / کۆپی', copied:'کۆپی کرا ✓',
         updateBtn:'نوێکردنەوە', invalid:'ئەم QR کۆدە دروست نییە یاخود بەردەست نییە', net:'پەیوەندی نەکرا. ئینتەرنێت بپشکنە.', error:'هەڵە', thanks:'سوپاس بۆ متمانەکەت', modalBtn:'تێگەیشتم، پیشاندانی زانیارییەکان',
         warningTitle:'⚠️ ئاگادارییەکی گرنگ', warningText:'تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.',
         repOpen:'زانیارییەکە هەڵەیە؟ داواکاری گۆڕین (دەستبەجێ ناردن)', repSend:'ناردنی خێرای داواکاری گۆڕین', repWait:'چاوەڕێ بکە...', repDone:'✅ داواکارییەکەت ڕاستەوخۆ نێردرا. دوای چارەسەرکردن، QR ـەکە دووبارە سکان بکەرەوە.', repAlready:'داواکارییەکەت پێشتر نێردراوە، بەم زووانه چارەسەر دەکرێت.', repErr:'نەنێردرا، تکایە دووبارە هەوڵ بدەرەوە.' },
   ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
-        scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'في انتظار الرمز...', copy:'نسخ', copied:'تم النسخ ✓',
+        scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', copy:'نسخ', copied:'تم النسخ ✓',
         updateBtn:'تحديث', invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
         warningTitle:'⚠️ تنبيه مهم', warningText:'يرجى عدم إدخال Apple ID هذا في إعدادات الهاتف (Settings) نهائياً! قم بإدخاله في App Store فقط.<br><br>عند الإدخال، يرجى وضعه مباشرة على رقم هاتفك.',
         repOpen:'المعلومات غير صحيحة؟ طلب تعديل مباشر', repSend:'إرسال طلب التعديل فوراً', repWait:'جاري الانتظار...', repDone:'✅ تم إرسال طلبك مباشرة. بعد المعالجة، يرجى مسح رمز QR مرة أخرى.', repAlready:'تم إرسال طلبك مسبقاً، سيتم حل المشكلة قريباً.', repErr:'فشل الإرسال، يرجى المحاولة مرة أخرى.' },
   en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
-        scanned:'Scanned first time', again:'Already scanned', email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'Waiting for code...', copy:'Copy', copied:'Copied ✓',
+        scanned:'Scanned first time', again:'Already scanned', email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', copy:'Copy', copied:'Copied ✓',
         updateBtn:'Refresh', invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
         warningTitle:'⚠ Important Warning', warningText:'Please do NOT sign in with this Apple ID in your phone Settings! Sign in via App Store only.<br><br>When signing in, please use your own mobile phone number directly.',
         repOpen:'Wrong information? Instant request change', repSend:'Send request instantly', repWait:'Please wait...', repDone:'✅ Request sent instantly. After resolution, scan the QR code again.', repAlready:'Your request was already submitted, it will be resolved soon.', repErr:'Failed to send, please try again.' }
@@ -222,7 +219,6 @@ const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return
 
 let lang = store.get('dubra_lang') || null;
 let state = { kind: 'loading' };
-let otpInterval = null;
 let lastDetectedOtp = '';
 
 function playNotificationSound() {
@@ -373,7 +369,7 @@ function render(){
 
   if (otpLink) {
     html += `
-      <div class="otp-box">
+      <div class="otp-box" data-otp-url="${esc(otpLink)}">
         <div class="otp-header">
           <div class="otp-title">
             <svg style="width:16px;height:16px" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4v-3.586l6.414-6.414A6 6 0 0121 9z"/></svg>
@@ -384,7 +380,6 @@ function render(){
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
               <span>${t.updateBtn}</span>
             </button>
-            <div class="otp-live"><i><span></span></i>Live</div>
           </div>
         </div>
         <div class="otp-row" id="otpRow">
@@ -425,10 +420,6 @@ function render(){
   box.innerHTML = html;
 
   if (otpLink) {
-    fetchOtp(otpLink);
-    if (otpInterval) clearInterval(otpInterval);
-    otpInterval = setInterval(() => fetchOtp(otpLink), 4000);
-    
     const updateBtnEl = document.getElementById('updateOtpBtn');
     if (updateBtnEl) {
       updateBtnEl.onclick = () => {
@@ -437,8 +428,6 @@ function render(){
         setTimeout(() => updateBtnEl.classList.remove('spinning'), 600);
       };
     }
-  } else {
-    if (otpInterval) clearInterval(otpInterval);
   }
 
   reportContainer.innerHTML = `
