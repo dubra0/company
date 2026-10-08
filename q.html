@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#0f172a">
+<meta name="theme-color" content="#070d1b">
 <title>Company Du Bra - زانیاری کارت</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap">
@@ -45,9 +45,8 @@ html[lang="en"] body{font-family:var(--f-en)}
 
 .hero{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px 18px 18px;box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:center;display:grid;justify-items:center;gap:10px}
 
-/* Logo Image Styling */
-.logo-box{width:95px;height:95px;border-radius:50%;background:#030712;border:2px solid var(--blue);display:grid;place-items:center;box-shadow:0 0 25px var(--blue-glow);margin-bottom:2px;overflow:hidden;position:relative}
-.logo-box img{width:100%;height:100%;object-fit:cover}
+/* Logo SVG Container Styling */
+.logo-box{width:105px;height:105px;border-radius:50%;background:#000;border:2px solid var(--blue);display:grid;place-items:center;box-shadow:0 0 25px var(--blue-glow);margin-bottom:2px;overflow:hidden;position:relative}
 
 .hero h1{margin:0;font-family:var(--f-en);font-size:1.4rem;font-weight:900;letter-spacing:.05em;color:var(--blue);line-height:1.2}
 .hero .sub-title{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-top:-4px}
@@ -80,8 +79,7 @@ html[lang="en"] body{font-family:var(--f-en)}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:999;display:grid;place-items:center;padding:20px;animation:fadeIn .2s ease}
 .modal-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px 20px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.7);display:grid;gap:14px;animation:scaleUp .2s ease}
-.modal-logo{width:64px;height:64px;border-radius:50%;background:#030712;border:2px solid var(--blue);display:grid;place-items:center;margin:0 auto;box-shadow:0 0 20px var(--blue-glow);overflow:hidden}
-.modal-logo img{width:100%;height:100%;object-fit:cover}
+.modal-logo{width:64px;height:64px;border-radius:50%;background:#000;border:2px solid var(--blue);display:grid;place-items:center;margin:0 auto;box-shadow:0 0 20px var(--blue-glow);overflow:hidden}
 .modal-title{color:var(--bad);font-weight:900;font-size:1.05rem;display:flex;align-items:center;justify-content:center;gap:6px;margin:0}
 .modal-text{font-size:.85rem;color:var(--ink);line-height:1.6;text-align:right}
 html[dir="ltr"] .modal-text{text-align:left}
@@ -148,11 +146,35 @@ html[dir="ltr"] .modal-text{text-align:left}
 </head>
 <body>
 
+  <!-- Modal بۆ هەڵبژاردنی زمان لە سەرەتادا -->
   <div class="lang-modal-overlay" id="langSelectModal">
     <div class="lang-select-card">
       <div class="logo-box" style="margin:0 auto">
-        <!-- لێرە ლიنگی وێنەی لۆگۆکەت دابنە -->
-        <img src="https://i.ibb.co/30B3j22/logo.png" alt="Company Du Bra Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><path d=%22M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5%22/></svg>'">
+        <svg viewBox="0 0 500 500" width="100%" height="100%">
+          <circle cx="250" cy="250" r="240" fill="black" stroke="white" stroke-width="6"/>
+          <circle cx="250" cy="250" r="210" fill="none" stroke="white" stroke-width="3"/>
+          <defs>
+            <path id="topTextPath1" d="M 80,250 A 170,170 0 1,1 420,250" />
+            <path id="bottomTextPath1" d="M 410,250 A 160,160 0 0,1 90,250" />
+          </defs>
+          <text fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="28" letter-spacing="3">
+            <textPath href="#topTextPath1" startOffset="50%" text-anchor="middle">COMPANY DU BRA</textPath>
+          </text>
+          <text fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="26" letter-spacing="2.5">
+            <textPath href="#bottomTextPath1" startOffset="50%" text-anchor="middle">IRAQ KURDISTAN</textPath>
+          </text>
+          <g fill="white" transform="translate(45, 230)">
+            <path d="M10,0 C5,-10 0,-15 -5,-20 C0,-10 5,0 10,0 Z M15,20 C10,10 5,5 0,0 C5,10 10,15 15,20 Z M5,40 C0,30 -5,25 -10,20 C-5,30 0,35 5,40 Z"/>
+          </g>
+          <g fill="white" transform="translate(435, 230) scale(-1, 1)">
+            <path d="M10,0 C5,-10 0,-15 -5,-20 C0,-10 5,0 10,0 Z M15,20 C10,10 5,5 0,0 C5,10 10,15 15,20 Z M5,40 C0,30 -5,25 -10,20 C-5,30 0,35 5,40 Z"/>
+          </g>
+          <g fill="white" transform="translate(170, 155) scale(0.65)">
+            <path d="M117.678,102.053 c-2.037,-16.906 11.458,-25.26 12.016,-25.618 c-6.55,-9.578 -16.745,-10.876 -20.316,-11.168 c-8.65,-0.902 -16.924,5.088 -21.309,5.088 c-4.404,0 -11.237,-4.96 -18.455,-4.832 c-9.489,0.178 -18.232,5.516 -23.102,14.004 c-9.873,17.135 -2.529,42.455 7.021,56.328 c4.814,6.974 10.556,14.777 18.093,14.492 c7.284,-0.292 10.038,-4.707 18.847,-4.707 c8.775,0 11.432,4.707 19.204,4.553 c7.872,-0.254 13.01,-7.433 17.794,-14.429 c5.636,-8.188 7.954,-16.108 8.083,-16.517 C118.411,103.58 117.678,102.053 117.678,102.053 Z"/>
+            <path d="M102.404,36.568 c4.116,-4.996 6.879,-11.944 6.126,-18.868 c-5.922,0.241 -13.084,3.948 -17.332,8.944 c-3.805,4.444 -7.139,11.536 -6.079,18.368 C91.076,45.344 98.118,41.42 102.404,36.568 Z"/>
+          </g>
+          <text x="250" y="265" fill="black" font-family="Arial, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">DB</text>
+        </svg>
       </div>
       <h3 class="lang-select-title">تکایە زمانێک هەڵبژێرە<br><span style="font-size:0.8rem;color:var(--muted);font-weight:500">Please select your language</span></h3>
       <div class="lang-options">
@@ -163,10 +185,35 @@ html[dir="ltr"] .modal-text{text-align:left}
     </div>
   </div>
 
+  <!-- Modal هۆشداری Apple ID -->
   <div class="modal-overlay" id="warningModal" style="display:none">
     <div class="modal-card">
       <div class="modal-logo">
-        <img src="https://i.ibb.co/30B3j22/logo.png" alt="Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><path d=%22M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5%22/></svg>'">
+        <svg viewBox="0 0 500 500" width="100%" height="100%">
+          <circle cx="250" cy="250" r="240" fill="black" stroke="white" stroke-width="6"/>
+          <circle cx="250" cy="250" r="210" fill="none" stroke="white" stroke-width="3"/>
+          <defs>
+            <path id="topTextPath2" d="M 80,250 A 170,170 0 1,1 420,250" />
+            <path id="bottomTextPath2" d="M 410,250 A 160,160 0 0,1 90,250" />
+          </defs>
+          <text fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="28" letter-spacing="3">
+            <textPath href="#topTextPath2" startOffset="50%" text-anchor="middle">COMPANY DU BRA</textPath>
+          </text>
+          <text fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="26" letter-spacing="2.5">
+            <textPath href="#bottomTextPath2" startOffset="50%" text-anchor="middle">IRAQ KURDISTAN</textPath>
+          </text>
+          <g fill="white" transform="translate(45, 230)">
+            <path d="M10,0 C5,-10 0,-15 -5,-20 C0,-10 5,0 10,0 Z M15,20 C10,10 5,5 0,0 C5,10 10,15 15,20 Z M5,40 C0,30 -5,25 -10,20 C-5,30 0,35 5,40 Z"/>
+          </g>
+          <g fill="white" transform="translate(435, 230) scale(-1, 1)">
+            <path d="M10,0 C5,-10 0,-15 -5,-20 C0,-10 5,0 10,0 Z M15,20 C10,10 5,5 0,0 C5,10 10,15 15,20 Z M5,40 C0,30 -5,25 -10,20 C-5,30 0,35 5,40 Z"/>
+          </g>
+          <g fill="white" transform="translate(170, 155) scale(0.65)">
+            <path d="M117.678,102.053 c-2.037,-16.906 11.458,-25.26 12.016,-25.618 c-6.55,-9.578 -16.745,-10.876 -20.316,-11.168 c-8.65,-0.902 -16.924,5.088 -21.309,5.088 c-4.404,0 -11.237,-4.96 -18.455,-4.832 c-9.489,0.178 -18.232,5.516 -23.102,14.004 c-9.873,17.135 -2.529,42.455 7.021,56.328 c4.814,6.974 10.556,14.777 18.093,14.492 c7.284,-0.292 10.038,-4.707 18.847,-4.707 c8.775,0 11.432,4.707 19.204,4.553 c7.872,-0.254 13.01,-7.433 17.794,-14.429 c5.636,-8.188 7.954,-16.108 8.083,-16.517 C118.411,103.58 117.678,102.053 117.678,102.053 Z"/>
+            <path d="M102.404,36.568 c4.116,-4.996 6.879,-11.944 6.126,-18.868 c-5.922,0.241 -13.084,3.948 -17.332,8.944 c-3.805,4.444 -7.139,11.536 -6.079,18.368 C91.076,45.344 98.118,41.42 102.404,36.568 Z"/>
+          </g>
+          <text x="250" y="265" fill="black" font-family="Arial, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">DB</text>
+        </svg>
       </div>
       <h3 class="modal-title" id="modalTitleText">⚠️ ئاگادارییەکی گرنگ</h3>
       <div class="modal-text" id="modalDescText">
@@ -197,14 +244,37 @@ html[dir="ltr"] .modal-text{text-align:left}
 
   <section class="hero">
     <div class="logo-box">
-      <!-- لێرە دەتوانیت لینکی وێنەی لۆگۆکەی خۆت لە شوێنی src دابنێیت -->
-      <img src="https://i.ibb.co/30B3j22/logo.png" alt="Company Du Bra Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><path d=%22M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5%22/></svg>'">
+      <!-- لۆگۆی نوێی ڕەسەن بە SVG -->
+      <svg viewBox="0 0 500 500" width="100%" height="100%">
+        <circle cx="250" cy="250" r="240" fill="black" stroke="white" stroke-width="6"/>
+        <circle cx="250" cy="250" r="210" fill="none" stroke="white" stroke-width="3"/>
+        <defs>
+          <path id="topTextPath3" d="M 80,250 A 170,170 0 1,1 420,250" />
+          <path id="bottomTextPath3" d="M 410,250 A 160,160 0 0,1 90,250" />
+        </defs>
+        <text fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="28" letter-spacing="3">
+          <textPath href="#topTextPath3" startOffset="50%" text-anchor="middle">COMPANY DU BRA</textPath>
+        </text>
+        <text fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="26" letter-spacing="2.5">
+          <textPath href="#bottomTextPath3" startOffset="50%" text-anchor="middle">IRAQ KURDISTAN</textPath>
+        </text>
+        <g fill="white" transform="translate(45, 230)">
+          <path d="M10,0 C5,-10 0,-15 -5,-20 C0,-10 5,0 10,0 Z M15,20 C10,10 5,5 0,0 C5,10 10,15 15,20 Z M5,40 C0,30 -5,25 -10,20 C-5,30 0,35 5,40 Z"/>
+        </g>
+        <g fill="white" transform="translate(435, 230) scale(-1, 1)">
+          <path d="M10,0 C5,-10 0,-15 -5,-20 C0,-10 5,0 10,0 Z M15,20 C10,10 5,5 0,0 C5,10 10,15 15,20 Z M5,40 C0,30 -5,25 -10,20 C-5,30 0,35 5,40 Z"/>
+        </g>
+        <g fill="white" transform="translate(170, 155) scale(0.65)">
+          <path d="M117.678,102.053 c-2.037,-16.906 11.458,-25.26 12.016,-25.618 c-6.55,-9.578 -16.745,-10.876 -20.316,-11.168 c-8.65,-0.902 -16.924,5.088 -21.309,5.088 c-4.404,0 -11.237,-4.96 -18.455,-4.832 c-9.489,0.178 -18.232,5.516 -23.102,14.004 c-9.873,17.135 -2.529,42.455 7.021,56.328 c4.814,6.974 10.556,14.777 18.093,14.492 c7.284,-0.292 10.038,-4.707 18.847,-4.707 c8.775,0 11.432,4.707 19.204,4.553 c7.872,-0.254 13.01,-7.433 17.794,-14.429 c5.636,-8.188 7.954,-16.108 8.083,-16.517 C118.411,103.58 117.678,102.053 117.678,102.053 Z"/>
+          <path d="M102.404,36.568 c4.116,-4.996 6.879,-11.944 6.126,-18.868 c-5.922,0.241 -13.084,3.948 -17.332,8.944 c-3.805,4.444 -7.139,11.536 -6.079,18.368 C91.076,45.344 98.118,41.42 102.404,36.568 Z"/>
+        </g>
+        <text x="250" y="265" fill="black" font-family="Arial, sans-serif" font-weight="900" font-size="65" text-anchor="middle" letter-spacing="2">DB</text>
+      </svg>
     </div>
     <h1>Company Du Bra</h1>
     <div class="sub-title">IRAQ KURDISTAN</div>
     <div class="apple-id-tag">Apple ID Store</div>
     <div class="hero-foot">
-      <!-- ئێرە نیشانەی سەوزی ترپەدار (LED) لەگەڵ کاتەکەیە -->
       <span class="state ok" id="state"><i></i><span id="stateText">سکانکراوە</span></span>
       <span class="stamp" id="time"></span>
     </div>
