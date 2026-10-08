@@ -215,7 +215,13 @@ let lang = store.get('dubra_lang') || null;
 let state = { kind: 'loading' };
 
 const urlParams = new URLSearchParams(location.search);
-const code = (urlParams.get('c') || '').trim().toUpperCase();
+let code = (urlParams.get('c') || '').trim().toUpperCase();
+
+if (code) {
+  store.set('dubra_active_code', code);
+} else {
+  code = store.get('dubra_active_code') || '';
+}
 
 const box = document.getElementById('box');
 const reportContainer = document.getElementById('reportContainer');
@@ -469,7 +475,6 @@ const langBtn = document.getElementById('langBtn'), langMenu = document.getEleme
 function toggleMenu(open){ langMenu.hidden = !open; langBtn.setAttribute('aria-expanded', String(open)); }
 langBtn.onclick = e => { e.stopPropagation(); toggleMenu(langMenu.hidden); };
 
-// لێرەدا چارەسەر کرا تا ڕاستەوخۆ دوای گۆڕینی زمان، ڕەندەر بێتەوە و ناوەڕۆکەکە نوێ ببێتەوە
 langMenu.querySelectorAll('[data-lang]').forEach(b => {
   b.onclick = () => {
     lang = b.dataset.lang; 
