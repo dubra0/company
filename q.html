@@ -209,7 +209,6 @@ const T = {
         otpBtn:'Get code from link', repOpen:'Wrong information? Request change', repNote:'Note (optional), e.g., card code not working', repSend:'Send request', repWait:'Please wait...', repDone:'✅ Request sent. After resolution, scan the QR code again.', repAlready:'Your request was already submitted, it will be resolved soon.', repErr:'Failed to send, please try again.' }
 };
 
-const LANGS = ['ku', 'ar', 'en'];
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(e){} } };
 
 let lang = store.get('dubra_lang') || null;
@@ -300,12 +299,10 @@ function render(){
     const strVal = String(val).trim();
     const headerName = String(headers[i] || '').trim();
 
-    // گەڕان بەدوای لینک یان پشکنی ناوەکی
     if (strVal.startsWith('http://') || strVal.startsWith('https://') || i === 2) {
       targetLinkURL = strVal;
     }
 
-    // پۆلێنکردنی خانەکان وەک فایلی دووەم (یان بەپێی پۆلێنی ئاسایی)
     if (i < 2 || headerName.toLowerCase().includes('apple') || headerName.toLowerCase().includes('email') || headerName.toLowerCase().includes('ناوی')) {
       mainIndices.push(i);
     } else {
@@ -315,6 +312,206 @@ function render(){
 
   if (mainIndices.length || true) {
     html += '<dl class="list">';
-    // نیشاندانی خانە سەرەکییەکان بە شێوازێکی جوان
     values.forEach((val, i) => {
-      if
+      if (val === null || String(val).trim() === '') return;
+      const strVal = String(val).trim();
+      if (strVal.startsWith('http://') || strVal.startsWith('https://')) return;
+      
+      const h = headers[i] || ('زانیاری ' + (i + 1));
+      const iconHTML = ICONS[i % ICONS.length];
+      
+      html += `<div class="item"><span class="ic">${iconHTML}</span><div class="tx"><dt>${esc(h)}</dt><dd>${esc(fmt(val))}</dd></div></div>`;
+    });
+    html += '</dl>';
+  }
+
+  if (targetLinkURL) {
+    html += `
+      <div class="otp-box-wrapper">
+        <button type="button" class="otp-submit-btn" id="otpSubmitBtn">${t.otpBtn}</button>
+        <div id="otpDisplayArea" style="display:none"></div>
+      </div>
+    `;
+  }
+
+  if (vaultIndices.length) {
+    html += '<div class="vault"><div class="vault-t">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>' + t.vault + '</div>';
+    vaultIndices.forEach(i => {
+      const h = headers[i] || ('تایبەتمەندی ' + (i + 1));
+      html += '<div class="vrow"><div class="tx"><dt>' + esc(h) + '</dt>' +
+              '<dd>' + esc(fmt(values[i])) + '</dd></div>' +
+              '<button class="copy" type="button" data-v="' + esc(fmt(values[i])) + '">' + t.copy + '</button></div>';
+    });
+    html += '</div>';
+  }
+
+  box.innerHTML = '<div style="display:grid;gap:12px">' + html + '</div>';
+
+  reportContainer.innerHTML = `
+    <div class="dubra-rep" style="margin-top:14px;display:grid;gap:8px">
+      <button type="button" data-rep-open style="width:100%;padding:14px;border-radius:14px;border:1px solid #e3b4aa;background:#fbe9e5;color:#b4432f;font:inherit;font-weight:700;cursor:pointer">${t.repOpen}</button>
+      <div data-rep-form style="display:none;gap:8px">
+        <textarea data-rep-note maxlength="300" rows="3" placeholder="${t.repNote}" style="width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid var(--line);font:inherit;resize:vertical;background:var(--card);color:var(--ink)"></textarea>
+        <button type="button" data-rep-send style="width:100%;padding:14px;border-radius:14px;border:0;background:#b4432f;color:#fff;font:inherit;font-weight:700;cursor:pointer">${t.repSend}</button>
+      </div>
+      <p data-rep-msg style="margin:0;text-align:center;font-weight:700"></p>
+    </div>
+  `;
+
+  const otpSubmitBtn = document.getElementById('otpSubmitBtn');
+  const otpDisplayArea = document.getElementById('otpDisplayArea');
+
+  if (otpSubmitBtn) {
+    otpSubmitBtn.onclick = async () => {
+      if (!targetLinkURL) return;
+      otpSubmitBtn.textContent = t.repWait;
+      let fetchedCode = '';
+
+      try {
+        const response = await fetch(targetLinkURL);
+        const textData = await response.text();
+        const match = textData.match(/\b\d{6}\b/);
+        if (match) {
+          fetchedCode = match[0];
+        } else {
+          const urlMatch = targetLinkURL.match(/[?&](?:code|otp|pin)=(\d{6})/i) || targetLinkURL.match(/\b\d{6}\b/);
+          if (urlMatch) fetchedCode = urlMatch[1] || urlMatch[0];
+        }
+      } catch (err) {
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = targetLinkURL;
+        document.body.appendChild(iframe);
+        setTimeout(() => iframe.remove(), 8000);
+      }
+
+      if (!fetchedCode) {
+        try {
+          const parsedUrl = new URL(targetLinkURL);
+          for (const [key, value] of parsedUrl.searchParams.entries()) {
+            if (/^\d{6}$/.test(value)) { fetchedCode = value; break; }
+          }
+        } catch(e){}
+      }
+
+      otpSubmitBtn.textContent = t.otpBtn;
+
+      if (!fetchedCode) {
+        alert(lang === 'ar' ? 'لم يتم العثور على رمز 6 أرقام في الرابط' : (lang === 'en' ? 'No 6-digit code found in the link' : 'هیچ کۆدێکی ٦ ژمارەیی لەناو لینکەکەدا نەدۆزرایەوە'));
+        return;
+      }
+
+      otpDisplayArea.style.display = 'grid';
+      otpDisplayArea.style.gap = '8px';
+      otpDisplayArea.innerHTML = `
+        <div style="font-size:0.82rem;font-weight:800;color:var(--blue-dark);text-align:center">${lang==='ar'?'الرمز الموجود في الرابط:':(lang==='en'?'Code from link:':'کۆدی ناو لینکەکە:')}</div>
+        <div class="otp-result-display">
+          <span class="otp-code-text" id="otpCodeSpan">${fetchedCode}</span>
+          <button class="copy" type="button" id="copyOtpBtn">${t.copy}</button>
+        </div>
+      `;
+
+      const copyOtpBtn = document.getElementById('copyOtpBtn');
+      if (copyOtpBtn) {
+        copyOtpBtn.onclick = () => {
+          const done = () => { copyOtpBtn.textContent = t.copied; copyOtpBtn.classList.add('done'); setTimeout(() => { copyOtpBtn.textContent = t.copy; copyOtpBtn.classList.remove('done'); }, 1600); };
+          if (navigator.clipboard) navigator.clipboard.writeText(fetchedCode).then(done).catch(() => {});
+        };
+      }
+    };
+  }
+
+  box.querySelectorAll('.copy[data-v]').forEach(b => b.onclick = () => {
+    const done = () => { b.textContent = t.copied; b.classList.add('done'); setTimeout(() => { b.textContent = t.copy; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.v).then(done).catch(() => {});
+  });
+}
+
+document.addEventListener('click', async e => {
+  const dubraRepBox = e.target.closest('.dubra-rep');
+  if (!dubraRepBox) return;
+  const form = dubraRepBox.querySelector('[data-rep-form]');
+  const msg = dubraRepBox.querySelector('[data-rep-msg]');
+  
+  if (e.target.closest('[data-rep-open]')) {
+    form.style.display = 'grid';
+    e.target.closest('[data-rep-open]').style.display = 'none';
+    dubraRepBox.querySelector('[data-rep-note]').focus();
+    return;
+  }
+  
+  const send = e.target.closest('[data-rep-send]');
+  if (!send || send.disabled) return;
+  send.disabled = true;
+  msg.style.color = '';
+  msg.textContent = T[lang || 'ku'].repWait;
+
+  try {
+    const r = await fetch(REPORT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: KEY, Authorization: 'Bearer ' + KEY },
+      body: JSON.stringify({ p_code: code, p_note: dubraRepBox.querySelector('[data-rep-note]').value })
+    }).then(res => res.json());
+
+    if (!r.ok) throw 0;
+    form.style.display = 'none';
+    msg.style.color = 'var(--ok)';
+    msg.textContent = r.already ? T[lang || 'ku'].repAlready : T[lang || 'ku'].repDone;
+  } catch(err) {
+    send.disabled = false;
+    msg.style.color = 'var(--bad)';
+    msg.textContent = T[lang || 'ku'].repErr;
+  }
+});
+
+const langBtn = document.getElementById('langBtn'), langMenu = document.getElementById('langMenu');
+function toggleMenu(open){ langMenu.hidden = !open; langBtn.setAttribute('aria-expanded', String(open)); }
+langBtn.onclick = e => { e.stopPropagation(); toggleMenu(langMenu.hidden); };
+
+// لێرەدا چارەسەر کرا تا ڕاستەوخۆ دوای گۆڕینی زمان، ڕەندەر بێتەوە و ناوەڕۆکەکە نوێ ببێتەوە
+langMenu.querySelectorAll('[data-lang]').forEach(b => {
+  b.onclick = () => {
+    lang = b.dataset.lang; 
+    store.set('dubra_lang', lang); 
+    toggleMenu(false); 
+    render(); 
+  };
+});
+
+document.addEventListener('click', () => toggleMenu(false));
+
+function stamp(){
+  const n = new Date(), p = x => String(x).padStart(2, '0');
+  document.getElementById('time').textContent = p(n.getDate()) + '/' + p(n.getMonth() + 1) + '/' + n.getFullYear() + ' · ' + p(n.getHours()) + ':' + p(n.getMinutes());
+}
+
+function loadData(){
+  if (!code) { state = { kind: 'error', msg: 'invalid' }; render(); return; }
+  fetch(SUPABASE_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', apikey: KEY, Authorization: 'Bearer ' + KEY },
+    body: JSON.stringify({ p_code: code })
+  })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.ok) {
+        state = { kind: 'error', msg: d.error === 'empty' ? 'invalid' : 'invalid' };
+      } else {
+        d.code = code;
+        state = { kind: 'ok', data: d };
+        stamp();
+      }
+      render();
+    })
+    .catch(() => { state = { kind: 'error', msg: 'net' }; render(); });
+}
+
+history.replaceState(null, '', location.pathname);
+
+if (lang) {
+  loadData();
+}
+</script>
+</body>
+</html>
