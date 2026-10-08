@@ -45,17 +45,30 @@ html[lang="en"] body{font-family:var(--f-en)}
 
 .hero{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px 18px 18px;box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:center;display:grid;justify-items:center;gap:10px}
 
-.logo-box{width:90px;height:90px;border-radius:50%;background:#030712;border:2px solid var(--blue);display:grid;place-items:center;box-shadow:0 0 25px var(--blue-glow);margin-bottom:2px;overflow:hidden;position:relative}
+/* Logo Image Styling */
+.logo-box{width:95px;height:95px;border-radius:50%;background:#030712;border:2px solid var(--blue);display:grid;place-items:center;box-shadow:0 0 25px var(--blue-glow);margin-bottom:2px;overflow:hidden;position:relative}
+.logo-box img{width:100%;height:100%;object-fit:cover}
 
 .hero h1{margin:0;font-family:var(--f-en);font-size:1.4rem;font-weight:900;letter-spacing:.05em;color:var(--blue);line-height:1.2}
 .hero .sub-title{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-top:-4px}
 .hero .apple-id-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-en);font-weight:700;font-size:.75rem;color:var(--blue);background:var(--blue-light);border:1px solid rgba(59,130,246,0.3);padding:4px 14px;border-radius:99px;margin-top:2px}
 
 .hero-foot{width:100%;margin-top:10px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:10px}
-.state{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.78rem;padding:4px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--line)}
-.state i{width:6px;height:6px;border-radius:50%;background:var(--muted)}
-.state.ok{color:var(--ok);background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)} .state.ok i{background:var(--ok)}
-.state.bad{color:var(--bad);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3)} .state.bad i{background:var(--bad)}
+
+/* LED Green Light Animation */
+.state{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.78rem;padding:4px 12px;border-radius:99px;background:var(--bg);border:1px solid var(--line)}
+.state i{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+.state.ok{color:var(--ok);background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)} 
+.state.ok i{background:var(--ok);box-shadow:0 0 10px var(--ok);animation:pulseLed 1.5s infinite}
+.state.bad{color:var(--bad);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3)} 
+.state.bad i{background:var(--bad)}
+
+@keyframes pulseLed{
+  0%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(16,185,129,0.7)}
+  70%{transform:scale(1);box-shadow:0 0 0 6px rgba(16,185,129,0)}
+  100%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(16,185,129,0)}
+}
+
 .stamp{font-family:var(--f-en);font-size:.7rem;color:var(--muted)}
 
 .lang-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:1000;display:grid;place-items:center;padding:20px;animation:fadeIn .2s ease}
@@ -67,8 +80,8 @@ html[lang="en"] body{font-family:var(--f-en)}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);z-index:999;display:grid;place-items:center;padding:20px;animation:fadeIn .2s ease}
 .modal-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px 20px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.7);display:grid;gap:14px;animation:scaleUp .2s ease}
-.modal-logo{width:64px;height:64px;border-radius:50%;background:#030712;border:2px solid var(--blue);display:grid;place-items:center;margin:0 auto;box-shadow:0 0 20px var(--blue-glow)}
-.modal-logo svg{width:36px;height:36px;fill:var(--blue)}
+.modal-logo{width:64px;height:64px;border-radius:50%;background:#030712;border:2px solid var(--blue);display:grid;place-items:center;margin:0 auto;box-shadow:0 0 20px var(--blue-glow);overflow:hidden}
+.modal-logo img{width:100%;height:100%;object-fit:cover}
 .modal-title{color:var(--bad);font-weight:900;font-size:1.05rem;display:flex;align-items:center;justify-content:center;gap:6px;margin:0}
 .modal-text{font-size:.85rem;color:var(--ink);line-height:1.6;text-align:right}
 html[dir="ltr"] .modal-text{text-align:left}
@@ -113,7 +126,6 @@ html[dir="ltr"] .modal-text{text-align:left}
 .extra-label{font-size:.65rem;font-weight:700;color:var(--muted)}
 .extra-val{font-family:var(--f-en);font-size:.95rem;font-weight:800;color:var(--ink);direction:ltr;text-align:start;overflow-wrap:anywhere}
 
-/* Support Section Styles */
 .support-section{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;display:grid;gap:12px;box-shadow:0 4px 20px rgba(0,0,0,.4)}
 .support-btn-main{width:100%;padding:14px;border-radius:16px;border:1px solid rgba(59,130,246,0.4);background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(37,99,235,0.25));color:var(--blue);font:inherit;font-weight:800;cursor:pointer;font-size:0.95rem;box-shadow:0 6px 16px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
 .support-btn-main:hover{background:var(--blue);color:#fff}
@@ -139,30 +151,8 @@ html[dir="ltr"] .modal-text{text-align:left}
   <div class="lang-modal-overlay" id="langSelectModal">
     <div class="lang-select-card">
       <div class="logo-box" style="margin:0 auto">
-        <svg viewBox="0 0 200 200" style="width:100%;height:100%">
-          <defs>
-            <path id="topCurveModal" d="M 25, 100 A 75,75 0 1,1 175,100" />
-            <path id="bottomCurveModal" d="M 175, 100 A 75,75 0 1,1 25,100" />
-          </defs>
-          <circle cx="100" cy="100" r="92" fill="none" stroke="var(--blue)" stroke-width="2"/>
-          <circle cx="100" cy="100" r="74" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <text font-family="Outfit, sans-serif" font-size="12" font-weight="900" fill="var(--blue)" letter-spacing="1.5">
-            <textPath href="#topCurveModal" startOffset="50%" text-anchor="middle">COMPANY DU BRA</textPath>
-          </text>
-          <text font-family="Outfit, sans-serif" font-size="12" font-weight="900" fill="var(--blue)" letter-spacing="1.5">
-            <textPath href="#bottomCurveModal" startOffset="50%" text-anchor="middle">IRAQ KURDISTAN</textPath>
-          </text>
-          <g fill="var(--blue)" transform="translate(14, 92)">
-            <path d="M0,0 Q6,-4 12,0 Q6,4 0,0 M4,-6 Q9,-9 14,-5 Q9,-1 4,-6 M8,-12 Q12,-15 17,-11 Q12,-7 8,-12" transform="scale(0.8)"/>
-          </g>
-          <g fill="var(--blue)" transform="translate(170, 92) scale(-0.8, 0.8)">
-            <path d="M0,0 Q6,-4 12,0 Q6,4 0,0 M4,-6 Q9,-9 14,-5 Q9,-1 4,-6 M8,-12 Q12,-15 17,-11 Q12,-7 8,-12"/>
-          </g>
-          <g transform="translate(73, 58) scale(0.35)">
-            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.13-1.9-14.34-6.08-3.05-2.6-6.88-7.15-11.48-13.65-6.19-8.71-11.05-18.27-14.59-28.67-3.53-10.4-5.3-20.35-5.3-29.86 0-14.37 3.73-25.7 11.19-34 7.46-8.3 16.63-12.51 27.51-12.62 4.9 0 10.03 1.25 15.39 3.75 5.36 2.5 8.93 3.75 10.72 3.75 1.74 0 5.48-1.32 11.22-3.95 5.75-2.64 10.85-3.86 15.32-3.65 11.23.44 20.37 4.7 27.42 12.78-10.15 6.22-15.11 15.37-14.88 27.46.22 9.5 3.97 17.29 11.25 23.37 7.29 6.08 16.03 9.3 26.22 9.66-2.07 6.43-4.8 13.56-8.19 21.39z" fill="#fff"/>
-          </g>
-          <text x="100" y="112" font-family="Outfit, sans-serif" font-size="28" font-weight="900" fill="var(--blue)" text-anchor="middle">DB</text>
-        </svg>
+        <!-- لێرە ლიنگی وێنەی لۆگۆکەت دابنە -->
+        <img src="https://i.ibb.co/30B3j22/logo.png" alt="Company Du Bra Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><path d=%22M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5%22/></svg>'">
       </div>
       <h3 class="lang-select-title">تکایە زمانێک هەڵبژێرە<br><span style="font-size:0.8rem;color:var(--muted);font-weight:500">Please select your language</span></h3>
       <div class="lang-options">
@@ -176,7 +166,7 @@ html[dir="ltr"] .modal-text{text-align:left}
   <div class="modal-overlay" id="warningModal" style="display:none">
     <div class="modal-card">
       <div class="modal-logo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <img src="https://i.ibb.co/30B3j22/logo.png" alt="Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><path d=%22M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5%22/></svg>'">
       </div>
       <h3 class="modal-title" id="modalTitleText">⚠️ ئاگادارییەکی گرنگ</h3>
       <div class="modal-text" id="modalDescText">
@@ -207,39 +197,15 @@ html[dir="ltr"] .modal-text{text-align:left}
 
   <section class="hero">
     <div class="logo-box">
-      <svg viewBox="0 0 200 200" style="width:100%;height:100%">
-        <defs>
-          <path id="topCurve" d="M 25, 100 A 75,75 0 1,1 175,100" />
-          <path id="bottomCurve" d="M 175, 100 A 75,75 0 1,1 25,100" />
-        </defs>
-        <circle cx="100" cy="100" r="92" fill="none" stroke="var(--blue)" stroke-width="2"/>
-        <circle cx="100" cy="100" r="74" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="4 3"/>
-        
-        <text font-family="Outfit, sans-serif" font-size="12" font-weight="900" fill="var(--blue)" letter-spacing="1.5">
-          <textPath href="#topCurve" startOffset="50%" text-anchor="middle">COMPANY DU BRA</textPath>
-        </text>
-        <text font-family="Outfit, sans-serif" font-size="12" font-weight="900" fill="var(--blue)" letter-spacing="1.5">
-          <textPath href="#bottomCurve" startOffset="50%" text-anchor="middle">IRAQ KURDISTAN</textPath>
-        </text>
-
-        <g fill="var(--blue)" transform="translate(14, 92)">
-          <path d="M0,0 Q6,-4 12,0 Q6,4 0,0 M4,-6 Q9,-9 14,-5 Q9,-1 4,-6 M8,-12 Q12,-15 17,-11 Q12,-7 8,-12" transform="scale(0.8)"/>
-        </g>
-        <g fill="var(--blue)" transform="translate(170, 92) scale(-0.8, 0.8)">
-          <path d="M0,0 Q6,-4 12,0 Q6,4 0,0 M4,-6 Q9,-9 14,-5 Q9,-1 4,-6 M8,-12 Q12,-15 17,-11 Q12,-7 8,-12"/>
-        </g>
-
-        <g transform="translate(73, 58) scale(0.35)">
-          <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.13-1.9-14.34-6.08-3.05-2.6-6.88-7.15-11.48-13.65-6.19-8.71-11.05-18.27-14.59-28.67-3.53-10.4-5.3-20.35-5.3-29.86 0-14.37 3.73-25.7 11.19-34 7.46-8.3 16.63-12.51 27.51-12.62 4.9 0 10.03 1.25 15.39 3.75 5.36 2.5 8.93 3.75 10.72 3.75 1.74 0 5.48-1.32 11.22-3.95 5.75-2.64 10.85-3.86 15.32-3.65 11.23.44 20.37 4.7 27.42 12.78-10.15 6.22-15.11 15.37-14.88 27.46.22 9.5 3.97 17.29 11.25 23.37 7.29 6.08 16.03 9.3 26.22 9.66-2.07 6.43-4.8 13.56-8.19 21.39z" fill="#fff"/>
-        </g>
-        <text x="100" y="112" font-family="Outfit, sans-serif" font-size="28" font-weight="900" fill="var(--blue)" text-anchor="middle">DB</text>
-      </svg>
+      <!-- لێرە دەتوانیت لینکی وێنەی لۆگۆکەی خۆت لە شوێنی src دابنێیت -->
+      <img src="https://i.ibb.co/30B3j22/logo.png" alt="Company Du Bra Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><path d=%22M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5%22/></svg>'">
     </div>
     <h1>Company Du Bra</h1>
     <div class="sub-title">IRAQ KURDISTAN</div>
     <div class="apple-id-tag">Apple ID Store</div>
     <div class="hero-foot">
-      <span class="state" id="state"><i></i><span id="stateTx"></span></span>
+      <!-- ئێرە نیشانەی سەوزی ترپەدار (LED) لەگەڵ کاتەکەیە -->
+      <span class="state ok" id="state"><i></i><span id="stateText">سکانکراوە</span></span>
       <span class="stamp" id="time"></span>
     </div>
   </section>
@@ -263,24 +229,24 @@ const REPORT_API = 'https://foplvmfppbngywmxmqof.supabase.co/rest/v1/rpc/report_
 const KEY = 'sb_publishable_HFxscwwTWxXEspJEnpJgFA_Ib4A5cAQ';
 
 const T = {
-  ku: { dir:'rtl', code:'KU', title:'زانیاری کارت', checking:'پشکنین…',
-        scanned:'یەکەم جار سکان کرا', again:'پێشتر سکان کراوە', email:'Email', password:'Password', otpTitle:'کۆدی دڵنیایی (OTP)', otpWait:'بۆ بینینی کۆد، دوگمەی نوێکردنەوە دابگرە...', copy:'کۆپی کردن', copied:'کۆپی کرا ✓',
+  ku: { dir:'rtl', code:'KU', title:'زانیاری کارت', checking:'پشکنین…', scannedText:'سکانکراوە',
+        email:'Email', password:'Password', otpTitle:'کۆدی دڵنیایی (OTP)', otpWait:'بۆ بینینی کۆد، دوگمەی نوێکردنەوە دابگرە...', copy:'کۆپی کردن', copied:'کۆپی کرا ✓',
         updateBtn:'نوێکردنەوە', invalid:'ئەم QR کۆدە دروست نییە یاخود بەردەست نییە', net:'پەیوەندی نەکرا. ئینتەرنێت بپشکنە.', error:'هەڵە', thanks:'سوپاس بۆ متمانەکەت', modalBtn:'تێگەیشتم، پیشاندانی زانیارییەکان',
         warningTitle:'⚠️ ئاگادارییەکی گرنگ', warningText:'تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.',
         supOpen:'پەیوەندی بە سەپۆرت (Support)', supTitle:'تکایە کێشەکەت دیاری بکە:',
         opt1:'ئەم Apple ID کار ناکات', opt2:'پاسۆرد یان ئیمەیڵ هەڵەیە', opt3:'پرسیارێکی تری هەیە / کێشەی تر',
         supWait:'چاوەڕێ بکە...', supDone:'✅ داواکارییەکەت نێردرا بۆ سەپۆرت. بە زوویی چارەسەر دەکرێت.', supAlready:'داواکارییەکەت پێشتر نێردراوە.', supErr:'نەنێردرا، دووبارە هەوڵ بدەرەوە.',
         customPlaceholder:'پرسیار یان کێشەکەت لێرە بنووسە...' },
-  ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
-        scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', copy:'نسخ', copied:'تم النسخ ✓',
+  ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…', scannedText:'تم المسح',
+        email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', copy:'نسخ', copied:'تم النسخ ✓',
         updateBtn:'تحديث', invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
         warningTitle:'⚠️ تنبيه مهم', warningText:'يرجى عدم إدخال Apple ID هذا في إعدادات الهاتف (Settings) نهائياً! قم بإدخاله في App Store فقط.<br><br>عند الإدخال، يرجى وضعه مباشرة على رقم هاتفك.',
         supOpen:'الاتصال بالدعم (Support)', supTitle:'يرجى تحديد مشكلتك:',
         opt1:'هذا Apple ID لا يعمل', opt2:'كلمة المرور أو البريد خطأ', opt3:'دي سؤال آخر / مشكلة أخرى',
         supWait:'جاري الانتظار...', supDone:'✅ تم إرسال طلبك إلى الدعم. سيتم الحل قريباً.', supAlready:'تم إرسال طلبك مسبقاً.', supErr:'فشل الإرسال، حاول مجدداً.',
         customPlaceholder:'اكتب سؤالك أو مشكلتك هنا...' },
-  en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
-        scanned:'Scanned first time', again:'Already scanned', email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', copy:'Copy', copied:'Copied ✓',
+  en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…', scannedText:'Scanned',
+        email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', copy:'Copy', copied:'Copied ✓',
         updateBtn:'Refresh', invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
         warningTitle:'⚠ Important Warning', warningText:'Please do NOT sign in with this Apple ID in your phone Settings! Sign in via App Store only.<br><br>When signing in, please use your own mobile phone number directly.',
         supOpen:'Contact Support', supTitle:'Please select your issue:',
@@ -359,6 +325,7 @@ function updateTexts() {
   closeModalBtn.textContent = t.modalBtn;
   document.getElementById('modalTitleText').textContent = t.warningTitle;
   document.getElementById('modalDescText').innerHTML = t.warningText;
+  document.getElementById('stateText').textContent = t.scannedText;
   document.querySelectorAll('[data-t]').forEach(el => el.textContent = t[el.dataset.t]);
   document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.lang === lang)));
 }
@@ -366,23 +333,23 @@ function updateTexts() {
 function render(){
   const t = T[lang || 'ku'];
   updateTexts();
-  const st = document.getElementById('state'), stx = document.getElementById('stateTx');
+  const st = document.getElementById('state');
 
   if (state.kind === 'loading') {
-    st.className = 'state'; stx.textContent = t.checking;
+    st.className = 'state';
     box.innerHTML = '<div style="height:90px;background:var(--bg);border-radius:12px"></div>';
     supportContainer.innerHTML = '';
     return;
   }
   if (state.kind === 'error') {
-    st.className = 'state bad'; stx.textContent = t.error;
+    st.className = 'state bad';
     box.innerHTML = '<div class="err">' + t[state.msg] + '</div>';
     supportContainer.innerHTML = '';
     return;
   }
 
   const d = state.data;
-  st.className = 'state ok'; stx.textContent = d.first ? t.scanned : t.again;
+  st.className = 'state ok';
   
   const values = d.data || [];
   
@@ -605,7 +572,7 @@ document.addEventListener('click', async e => {
   if (!optBtn || optBtn.disabled) return;
 
   const optNum = optBtn.getAttribute('data-sup-opt');
-  if (optNum === '3') return; // Handled by toggle above
+  if (optNum === '3') return;
 
   let noteText = 'کێشە: ئەم Apple ID کار ناکات';
   if (optNum === '2') noteText = 'کێشە: پاسۆرد یان ئیمەیڵ هەڵەیە';
