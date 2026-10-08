@@ -123,6 +123,11 @@ html[dir="ltr"] .modal-text{text-align:left}
 .support-option-btn svg{width:16px;height:16px;color:var(--muted);flex:none}
 .support-option-btn:hover svg{color:var(--blue)}
 .support-msg{margin:0;text-align:center;font-weight:700;font-size:0.85rem}
+.support-custom-box{display:grid;gap:8px;margin-top:6px}
+.support-textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:10px 12px;font:inherit;font-size:0.85rem;resize:vertical;min-height:75px}
+.support-textarea:focus{border-color:var(--blue);outline:none}
+.support-send-btn{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:10px;font:inherit;font-weight:800;font-size:0.85rem;cursor:pointer;transition:background .2s}
+.support-send-btn:hover{background:var(--blue-dark)}
 
 .foot{text-align:center;font-size:.75rem;color:var(--muted);display:grid;gap:2px;margin-top:4px}
 .foot b{color:var(--blue)}
@@ -264,21 +269,24 @@ const T = {
         warningTitle:'⚠️ ئاگادارییەکی گرنگ', warningText:'تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.',
         supOpen:'پەیوەندی بە سەپۆرت (Support)', supTitle:'تکایە کێشەکەت دیاری بکە:',
         opt1:'ئەم Apple ID کار ناکات', opt2:'پاسۆرد یان ئیمەیڵ هەڵەیە', opt3:'پرسیارێکی تری هەیە / کێشەی تر',
-        supWait:'چاوەڕێ بکە...', supDone:'✅ داواکارییەکەت نێردرا بۆ سەپۆرت. بە زوویی چارەسەر دەکرێت.', supAlready:'داواکارییەکەت پێشتر نێردراوە.', supErr:'نەنێردرا، دووبارە هەوڵ بدەرەوە.' },
+        supWait:'چاوەڕێ بکە...', supDone:'✅ داواکارییەکەت نێردرا بۆ سەپۆرت. بە زوویی چارەسەر دەکرێت.', supAlready:'داواکارییەکەت پێشتر نێردراوە.', supErr:'نەنێردرا، دووبارە هەوڵ بدەرەوە.',
+        customPlaceholder:'پرسیار یان کێشەکەت لێرە بنووسە...' },
   ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
         scanned:'تم المسح لأول مرة', alias:'تم المسح مسبقاً', email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', copy:'نسخ', copied:'تم النسخ ✓',
         updateBtn:'تحديث', invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
         warningTitle:'⚠️ تنبيه مهم', warningText:'يرجى عدم إدخال Apple ID هذا في إعدادات الهاتف (Settings) نهائياً! قم بإدخاله في App Store فقط.<br><br>عند الإدخال، يرجى وضعه مباشرة على رقم هاتفك.',
         supOpen:'الاتصال بالدعم (Support)', supTitle:'يرجى تحديد مشكلتك:',
         opt1:'هذا Apple ID لا يعمل', opt2:'كلمة المرور أو البريد خطأ', opt3:'دي سؤال آخر / مشكلة أخرى',
-        supWait:'جاري الانتظار...', supDone:'✅ تم إرسال طلبك إلى الدعم. سيتم الحل قريباً.', supAlready:'تم إرسال طلبك مسبقاً.', supErr:'فشل الإرسال، حاول مجدداً.' },
+        supWait:'جاري الانتظار...', supDone:'✅ تم إرسال طلبك إلى الدعم. سيتم الحل قريباً.', supAlready:'تم إرسال طلبك مسبقاً.', supErr:'فشل الإرسال، حاول مجدداً.',
+        customPlaceholder:'اكتب سؤالك أو مشكلتك هنا...' },
   en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
         scanned:'Scanned first time', again:'Already scanned', email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', copy:'Copy', copied:'Copied ✓',
         updateBtn:'Refresh', invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
         warningTitle:'⚠ Important Warning', warningText:'Please do NOT sign in with this Apple ID in your phone Settings! Sign in via App Store only.<br><br>When signing in, please use your own mobile phone number directly.',
         supOpen:'Contact Support', supTitle:'Please select your issue:',
         opt1:'This Apple ID does not work', opt2:'Password or Email is incorrect', opt3:'I have another question / issue',
-        supWait:'Please wait...', supDone:'✅ Request sent to support. It will be resolved soon.', supAlready:'Your request was already submitted.', supErr:'Failed to send, try again.' }
+        supWait:'Please wait...', supDone:'✅ Request sent to support. It will be resolved soon.', supAlready:'Your request was already submitted.', supErr:'Failed to send, try again.',
+        customPlaceholder:'Write your question or issue here...' }
 };
 
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(e){} } };
@@ -507,10 +515,14 @@ function render(){
           <span>${t.opt2}</span>
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
-        <button type="button" class="support-option-btn" data-sup-opt="3">
+        <button type="button" class="support-option-btn" data-sup-opt="3" id="opt3Btn">
           <span>${t.opt3}</span>
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
         </button>
+        <div id="supportCustomBox" class="support-custom-box" style="display:none">
+          <textarea id="supportCustomInput" class="support-textarea" placeholder="${t.customPlaceholder}"></textarea>
+          <button type="button" id="supportSendCustomBtn" class="support-send-btn">ناردنی پرسیار</button>
+        </div>
       </div>
       <p id="supportMsg" class="support-msg" style="display:none"></p>
     </div>
@@ -573,20 +585,44 @@ document.addEventListener('click', async e => {
     return;
   }
 
+  const opt3Btn = e.target.closest('#opt3Btn');
+  const customBox = document.getElementById('supportCustomBox');
+  if (opt3Btn && customBox) {
+    customBox.style.display = customBox.style.display === 'none' ? 'grid' : 'none';
+    return;
+  }
+
+  const sendCustomBtn = e.target.closest('#supportSendCustomBtn');
+  if (sendCustomBtn) {
+    const input = document.getElementById('supportCustomInput');
+    const customText = input ? input.value.trim() : '';
+    if (!customText) return;
+    submitSupportReport('پرسیار/کێشەی تر: ' + customText);
+    return;
+  }
+
   const optBtn = e.target.closest('[data-sup-opt]');
   if (!optBtn || optBtn.disabled) return;
 
-  const optNum = optBtn.dataset.sup-opt || optBtn.getAttribute('data-sup-opt');
-  const msgEl = document.getElementById('supportMsg');
-  
-  optionsList.style.display = 'none';
-  msgEl.style.display = 'block';
-  msgEl.style.color = '';
-  msgEl.textContent = T[lang || 'ku'].supWait;
+  const optNum = optBtn.getAttribute('data-sup-opt');
+  if (optNum === '3') return; // Handled by toggle above
 
   let noteText = 'کێشە: ئەم Apple ID کار ناکات';
   if (optNum === '2') noteText = 'کێشە: پاسۆرد یان ئیمەیڵ هەڵەیە';
-  if (optNum === '3') noteText = 'کێشە: پرسیارێکی تری هەیە / کێشەی تر';
+
+  submitSupportReport(noteText);
+});
+
+async function submitSupportReport(noteText) {
+  const optionsList = document.getElementById('supportOptionsList');
+  const msgEl = document.getElementById('supportMsg');
+  
+  if (optionsList) optionsList.style.display = 'none';
+  if (msgEl) {
+    msgEl.style.display = 'block';
+    msgEl.style.color = '';
+    msgEl.textContent = T[lang || 'ku'].supWait;
+  }
 
   try {
     const r = await fetch(REPORT_API, {
@@ -596,13 +632,17 @@ document.addEventListener('click', async e => {
     }).then(res => res.json());
 
     if (!r.ok) throw 0;
-    msgEl.style.color = 'var(--ok)';
-    msgEl.textContent = r.already ? T[lang || 'ku'].supAlready : T[lang || 'ku'].supDone;
+    if (msgEl) {
+      msgEl.style.color = 'var(--ok)';
+      msgEl.textContent = r.already ? T[lang || 'ku'].supAlready : T[lang || 'ku'].supDone;
+    }
   } catch(err) {
-    msgEl.style.color = 'var(--bad)';
-    msgEl.textContent = T[lang || 'ku'].supErr;
+    if (msgEl) {
+      msgEl.style.color = 'var(--bad)';
+      msgEl.textContent = T[lang || 'ku'].supErr;
+    }
   }
-});
+}
 
 const langBtn = document.getElementById('langBtn'), langMenu = document.getElementById('langMenu');
 function toggleMenu(open){ langMenu.hidden = !open; langBtn.setAttribute('aria-expanded', String(open)); }
